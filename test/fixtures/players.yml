@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  yahoo_ref: 12
+  player: Jose Cruz
+  team: CIN
+  
+another:
+  id: 2

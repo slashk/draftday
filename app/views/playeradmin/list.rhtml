@@ -1,0 +1,38 @@
+<h1>Players </h1>
+<p>Show by position: 
+    <%= link_to 'ALL', :action => 'list' %>
+    <%= link_to 'C', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "C" %>
+    <%= link_to '1B', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "1B" %>
+    <%= link_to '2B', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "2B" %>
+    <%= link_to 'SS', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "SS" %>
+    <%= link_to '3B', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "3B" %>
+    <%= link_to 'OF', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "OF" %>
+    <%= link_to 'SP', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "SP" %>
+    <%= link_to 'RP', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "RP" %>
+<br />
+Show by team: 
+<%= link_to 'ALL', :action => 'list' %>
+<%= link_to 'ARI', :action => 'list', :sortOrder => "rank asc", :team => "ARI" %>
+<%= link_to 'ATL', :action => 'list', :sortOrder => "rank asc", :team => "ATL" %>
+<%= link_to 'ChC', :action => 'list', :sortOrder => "rank asc", :team => "ChC" %>
+<%= link_to 'CIN', :action => 'list', :sortOrder => "rank asc", :team => "CIN" %>
+<%= link_to 'COL', :action => 'list', :sortOrder => "rank asc", :team => "COL" %>
+<%= link_to 'FLA', :action => 'list', :sortOrder => "rank asc", :team => "FLA" %>
+<%= link_to 'HOU', :action => 'list', :sortOrder => "rank asc", :team => "HOU" %>
+<%= link_to 'LAD', :action => 'list', :sortOrder => "rank asc", :team => "LAD" %>
+<%= link_to 'MIL', :action => 'list', :sortOrder => "rank asc", :team => "MIL" %>
+<%= link_to 'NYM', :action => 'list', :sortOrder => "rank asc", :team => "NYM" %>
+<%= link_to 'PHI', :action => 'list', :sortOrder => "rank asc", :team => "PHI" %>
+<%= link_to 'PIT', :action => 'list', :sortOrder => "rank asc", :team => "PIT" %>
+<%= link_to 'SD', :action => 'list', :sortOrder => "rank asc", :team => "SD" %>
+<%= link_to 'SF', :action => 'list', :sortOrder => "rank asc", :team => "SF" %>
+<%= link_to 'STL', :action => 'list', :sortOrder => "rank asc", :team => "STL" %>
+<%= link_to 'WAS', :action => 'list', :sortOrder => "rank asc", :team => "WAS" %>
+</p>
+
+
+<div id="search_hits"></div>
+
+<br />
+<%= @players.size %> players found. F. López.
+<br />

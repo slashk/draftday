@@ -1,0 +1,10 @@
+<p>
+<strong>Pick Number</strong>: <%=h @pick.pick_number %><br />
+<strong>Player Name</strong>: <%=h @pick.player.player unless @pick.player.nil? %><br />
+<strong>Player MLB Team</strong>: <%=h @pick.player.team unless @pick.player.nil? %> <br />
+<strong>Player Pos</strong>: <%=h @pick.player.pos unless @pick.player.nil? %> <br />
+<strong>Player Team</strong>: <%=h @pick.team.short_name unless @pick.team.nil? %><br />
+</p>
+
+<%= link_to 'Edit', :action => 'edit', :id => @pick %> |
+<%= link_to 'Back', :action => 'list' %>

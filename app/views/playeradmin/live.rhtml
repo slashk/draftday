@@ -1,0 +1,57 @@
+<h1><img src="/images/assy.gif" width=30 height=30> Draft Central </h1>
+
+<%= start_form_tag({:action=> "search"}, { :onSubmit => "Element.show('spinner');" }) %>
+<table>
+<tr>
+<td><label for="searchtext"><font size="1"><b>Player Search:</b></font></label></td>
+<td><%= text_field_tag :searchtext %></td>
+<td><img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" /></td>
+</tr>
+</table>
+<%= end_form_tag%>
+
+<%= observe_field(:searchtext,
+                 :frequency => 1,
+                 :update => :search_hits,
+                 :loading => "Element.show('spinner')",
+                 :complete => "Element.hide('spinner')",
+                 :url => { :action => :live_search }) 
+%>
+
+    <p>Show by position:
+       <%= link_to_remote 'C', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "C"}, :update => "search_hits" %>
+       <%= link_to_remote '1B', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "1B"}, :update => "search_hits" %>
+       <%= link_to_remote '2B', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "2B"}, :update => "search_hits" %>
+       <%= link_to_remote 'SS', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "SS"}, :update => "search_hits" %>
+       <%= link_to_remote '3B', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "3B"}, :update => "search_hits" %>
+       <%= link_to_remote 'OF', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "OF"}, :update => "search_hits" %>
+       <%= link_to_remote 'SP', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "SP"}, :update => "search_hits" %>
+       <%= link_to_remote 'RP', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "RP"}, :update => "search_hits" %>
+    <br />
+    Show by team:     
+    <%= link_to_remote 'ARI', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "ARI"}, :update => "search_hits" %>
+    <%= link_to_remote 'ATL', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "ATL"}, :update => "search_hits" %>
+    <%= link_to_remote 'ChC', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "ChC"}, :update => "search_hits"  %>
+    <%= link_to_remote 'CIN', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "CIN"}, :update => "search_hits"  %>
+    <%= link_to_remote 'COL', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "COL"}, :update => "search_hits"  %>
+    <%= link_to_remote 'FLA', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "FLA"}, :update => "search_hits"  %>
+    <%= link_to_remote 'HOU', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "HOU"}, :update => "search_hits"  %>
+    <%= link_to_remote 'LAD', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "LAD"}, :update => "search_hits"  %>
+    <%= link_to_remote 'MIL', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "MIL"}, :update => "search_hits"  %>
+    <%= link_to_remote 'NYM', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "NYM"}, :update => "search_hits"  %>
+    <%= link_to_remote 'PHI', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "PHI"}, :update => "search_hits"  %>
+    <%= link_to_remote 'PIT', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "PIT"}, :update => "search_hits"  %>
+    <%= link_to_remote 'SD', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "SD"}, :update => "search_hits"  %>
+    <%= link_to_remote 'SF', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "SF"}, :update => "search_hits"  %>
+    <%= link_to_remote 'STL', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "STL"}, :update => "search_hits"  %>
+    <%= link_to_remote 'WAS', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "WAS"}, :update => "search_hits"  %>
+    <br />
+
+    Show by franchise:        
+    <% for team in @teams %>
+      <%= link_to_remote team.short_name, :url => {:action => 'searchbyfranchise', :team => team.id}, :update => "search_hits" %>
+    <% end %>
+    </p>
+    
+<div id="search_hits">
+</div>

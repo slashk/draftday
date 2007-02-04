@@ -1,0 +1,10 @@
+<img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" />
+
+<%= periodically_call_remote :url => {:action => 'scrollDraft'}, 
+:update => :draft_live, 
+:frequency => 30, 
+:condition => 1,
+:before => "Element.show('spinner')", 
+:complete => "Element.hide('spinner')" %> 
+
+<div id="draft_live"></div>

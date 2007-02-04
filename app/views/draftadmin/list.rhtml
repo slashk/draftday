@@ -1,0 +1,27 @@
+<h1>Draft Picks</h1>
+
+<table width="100%" cellpadding=0 cellspacing=0>
+  <tr class="ListLine0">
+    <th>Pick</th>
+    <th align="left">Team</th>
+    <th align="left">Player</th>
+    <th align="center">MLB Team</th>
+    <th align="center">Pos</th>  
+  </tr>
+  
+<% for pick in @picks %>
+  <tr class="ListLine<%= cycle("1","0") %>">
+    <td align="center"><%=h pick.pick_number %></td>
+    <td><%=h pick.team.short_name unless pick.team.nil? %></td>
+    <td><%=h pick.player.player unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.team unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.pos unless pick.player.nil? %></td> 
+    <td><%= link_to 'Show', :action => 'show', :id => pick %> 
+    <%= link_to 'Edit', :action => 'edit', :id => pick %> 
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pick', :action => 'new' %>

@@ -1,0 +1,49 @@
+<table width="100%" cellpadding=0 cellspacing=0>
+  <tr>
+    <th align="left"><%= link_to_remote 'ID',:url => {:action => 'searchbypos',:sortOrder => "players.id",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="left"><%= link_to_remote 'Player',:url => {:action => 'searchbypos',:sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Team',:url => {:action => 'searchbypos',:sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Rank',:url => {:action => 'searchbypos',:sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <!-- <th align="center"><%= link_to 'Y!',:action => 'searchbypos',:sortOrder => "yahoo_ref asc", :fieldPosition => params[:fieldPosition] %></th> -->
+    <th align="center"><%= link_to_remote 'Pos',:url => {:action => 'searchbypos',:sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'R',:url => {:action => 'searchbypos',:sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'HR',:url => {:action => 'searchbypos',:sortOrder => "hr desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'RBI',:url => {:action => 'searchbypos', :sortOrder => "rbi desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'SB',:url => {:action => 'searchbypos', :sortOrder => "sb desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'AVG',:url => {:action => 'searchbypos', :sortOrder => "avg desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'IP',:url => {:action => 'searchbypos', :sortOrder => "ip desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'W',:url =>  {:action => 'searchbypos', :sortOrder => "w desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'SV',:url => {:action => 'searchbypos', :sortOrder => "sv desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'K',:url => {:action => 'searchbypos', :sortOrder => "k desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'ERA',:url => {:action => 'searchbypos', :sortOrder => "era asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'WHIP',:url => {:action => 'searchbypos', :sortOrder => "whip asc",  :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+</tr>
+
+<% if @players.empty? %>
+  '<%=h @phrase %>' not found!
+<% else %>
+<% for player in @players %>
+  <tr class="ListLine<%= cycle("1", "0") %>">
+    <td align="left"><%=h player.id  %></td>
+    <td align="left"><%=h player.player  %></td>
+    <td align="center"><%=h player.team.upcase  %></td>
+    <td align="center"><%=h player.rank  %></td>
+    <!-- ><td align="center"><%=h player.yahoo_ref  %></td> -->
+    <td align="center"><%=h player.pos  %></td>
+    <td align="right"><%=h player.R  %></td>
+    <td align="right"><%=h player.HR  %></td>
+    <td align="right"><%=h player.RBI  %></td>
+    <td align="right"><%=h player.SB  %></td>
+    <td align="right"><%=h sprintf("%0.3f",player.AVG) if (player.AVG!=nil)  %></td>
+    <td align="right"><%=h player.IP  %></td>
+    <td align="right"><%=h player.W  %></td>
+    <td align="right"><%=h player.SV  %></td>
+    <td align="right"><%=h player.K  %></td>
+    <td align="right"><%=h sprintf("%.2f",player.ERA) if (player.ERA!=nil) %></td>
+    <td align="right"><%=h sprintf("%.2f",player.WHIP) if (player.WHIP!=nil)  %></td>
+  </tr>
+<% end %>
+</table>  
+
+
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Editing player</h1>
+
+<%= start_form_tag :action => 'update', :id => @player %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<%= end_form_tag %>
+
+<%= link_to 'Show', :action => 'show', :id => @player %> |
+<%= link_to 'Back', :action => 'list' %>
