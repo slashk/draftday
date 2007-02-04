@@ -1,9 +1,9 @@
-<h1><img src="/images/assy.gif" width=30 height=30> Draft Central </h1>
+<table width="100%">
+<tr>
+<td><h2><img src="/images/assy.gif" width=30 height=30> Draft Central </h2></td>
 
 <%= start_form_tag({:action=> "search"}, { :onSubmit => "Element.show('spinner');" }) %>
-<table>
-<tr>
-<td><label for="searchtext"><font size="1"><b>Player Search:</b></font></label></td>
+<td><label for="searchtext"><font size="1"><b>Search:</b></font></label></td>
 <td><%= text_field_tag :searchtext %></td>
 <td><img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" /></td>
 </tr>
@@ -18,7 +18,7 @@
                  :url => { :action => :live_search }) 
 %>
 
-    <p>Show by position:
+    Show by position:
        <%= link_to_remote 'C', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "C"}, :update => "search_hits" %>
        <%= link_to_remote '1B', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "1B"}, :update => "search_hits" %>
        <%= link_to_remote '2B', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "2B"}, :update => "search_hits" %>
@@ -51,7 +51,6 @@
     <% for team in @teams %>
       <%= link_to_remote team.short_name, :url => {:action => 'searchbyfranchise', :team => team.id}, :update => "search_hits" %>
     <% end %>
-    </p>
     
 <div id="search_hits">
 </div>
