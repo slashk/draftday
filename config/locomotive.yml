@@ -2,5 +2,5 @@
 mode: development
 runs_at_launch: 0
 identifier: DraftDay
-port: 3000
+port: 3007
 bundle: /Applications/Locomotive2/Bundles/standardRailsSept2006.locobundle
