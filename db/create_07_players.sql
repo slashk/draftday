@@ -1,4 +1,4 @@
-INSERT INTO players (yahoo_ref,Player,Team,Pos,ORank,Rank,AB,H,R,HR,RBI,SB,AVG) VALUES
+INSERT INTO players (yahoo_ref,Player,Team,Pos,ORank,Rank,AB,R,HR,RBI,SB,AVG) VALUES
 ('6619','Albert Pujols','StL','1B','1','1','177/535','119','49','137','7','.331'),
 ('7437','Ryan Howard','Phi','1B','5','3','182/581','104','58','149','0','.313'),
 ('6154','Alfonso Soriano','ChC','OF','4','4','179/647','119','46','95','41','.277'),
@@ -395,7 +395,7 @@ INSERT INTO players (yahoo_ref,Player,Team,Pos,ORank,Rank,IP,W,SV,K,ERA,WHIP) VA
 ('7718','Sean Marshall','ChC','SP','524','462','125.2','6','0','77','5.59','1.52'),
 ('6261','Dámaso Marte','Pit','RP','494','464','58.1','1','0','63','3.70','1.41'),
 ('6751','Kyle Lohse','Cin','SP,RP','439','465','126.2','5','0','97','5.83','1.53'),
-('7747','Mike O'Connor','Was','SP','523','466','105.0','3','0','59','4.80','1.34'),
+('7747','Mike OConnor','Was','SP','523','466','105.0','3','0','59','4.80','1.34'),
 ('6946','Kirk Saarloos','Cin','SP,RP','445','468','121.1','7','2','52','4.75','1.66'),
 ('7733','Saul Rivera','Was','RP','522','471','60.1','3','1','41','3.43','1.51'),
 ('7149','Édgar González','Ari','SP,RP','528','474','42.2','3','0','28','4.22','1.27'),
