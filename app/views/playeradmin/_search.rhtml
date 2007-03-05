@@ -25,7 +25,7 @@
 <% for player in @players %>
   <tr class="ListLine<%= cycle("1", "0") %>">
     <td align="left"><%=h player.id  %></td>
-    <td align="left"><%=h player.player  %></td>
+    <td align="left"><a href="http://sports.yahoo.com/mlb/players/<%=h player.yahoo_ref %>"><%=h player.player  %></a></td>
     <td align="center"><%=h player.team.upcase  %></td>
     <td align="center"><%=h player.rank  %></td>
     <!-- ><td align="center"><%=h player.yahoo_ref  %></td> -->
