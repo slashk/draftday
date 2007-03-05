@@ -2,7 +2,13 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
+
+  create_table "picks", :force => true do |t|
+    t.column "player_id", :integer
+    t.column "team_id", :integer
+    t.column "pick_number", :integer, :default => 0, :null => false
+  end
 
   add_index "picks", ["player_id"], :name => "fk_picks_players"
   add_index "picks", ["team_id"], :name => "fk_picks_teams"
@@ -25,7 +31,15 @@ ActiveRecord::Schema.define(:version => 4) do
     t.column "RBI", :integer
     t.column "SB", :integer
     t.column "AVG", :float
+    t.column "orank", :integer
+    t.column "ab", :string
   end
+
+  add_index "players", ["pos"], :name => "posindex"
+  add_index "players", ["id"], :name => "playerindex"
+  add_index "players", ["player"], :name => "players_player_index"
+  add_index "players", ["pos"], :name => "players_pos_index"
+  add_index "players", ["rank"], :name => "players_rank_index"
 
   create_table "teams", :force => true do |t|
     t.column "full_name", :string
