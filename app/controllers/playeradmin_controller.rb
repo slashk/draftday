@@ -17,6 +17,7 @@ class PlayeradminController < ApplicationController
 
 
   def list
+    @teams = Team.find(:all)
     # Figure out sort order first (assuming that top sort button pushed)
     if params[:sortOrder].nil?
 	    params[:sortOrder] = "rank asc"
@@ -99,23 +100,29 @@ class PlayeradminController < ApplicationController
     end
     # If they clicked a fielding position, add these where clauses to the SQL
     if params[:fieldPosition].nil?
-      sortCons = 'picks.id IS NULL'    	
+      sortCons = 'picks.id IS NULL'
     else
-	    sortCons = 'picks.id IS NULL AND players.pos like "%' + params[:fieldPosition] + '%"'
+      # this is a dirty, dirty hack
+      if params[:fieldPosition] == "Batters"
+        sortCons = 'picks.id IS NULL AND players.pos not like "%P%"'
+  	  else
+	      sortCons = 'picks.id IS NULL AND players.pos like "%' + params[:fieldPosition] + '%"'
+      end
     end
     # If they clicked a team position, add these where clauses to the SQL
     # This tosses out the pos selection (and vice-versa)
     if params[:team].nil?
     else
 	    sortCons = 'picks.id IS NULL AND players.team like "%' + params[:team] + '%"'
-    end    # Find the players by sortCons (position or team) then order them by softOrder (rank, statistic or header)
+    end    
+    # Find the players by sortCons (position or team) then order them by softOrder (rank, statistic or header)
     # Left join is necessary to find all players NOT drafted
     # :include clause is necessary to reduce DB calls and make sure that primary key (player.id) is retrieved
     @players = Player.find(:all, 
-    :order => params[:sortOrder], 
-    :conditions => sortCons,  
-    :include => [:pick],
-    :joins => 'LEFT JOIN picks ON players.id=picks.id')
+      :order => params[:sortOrder], 
+      :conditions => sortCons,  
+      :include => [:pick],
+      :joins => 'LEFT JOIN picks ON players.id=picks.id')
     render :partial => "search"
   end
 
@@ -124,6 +131,5 @@ class PlayeradminController < ApplicationController
     @players = Player.find(:all, :include => [:pick], :conditions => ["players.id=picks.player_id and picks.team_id = ?", params[:team]])
     render :partial => "search"
   end
-
   
 end

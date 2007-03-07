@@ -1,6 +1,6 @@
 <table width="100%">
 <tr>
-<td><h2><img src="/images/assy.gif" width=30 height=30> Draft Central </h2></td>
+<td><h2><img src="/images/assy.gif" width=30 height=30> DraftDay Live</h2></td>
 
 <%= start_form_tag({:action=> "search"}, { :onSubmit => "Element.show('spinner');" }) %>
 <td><label for="searchtext"><font size="1"><b>Search:</b></font></label></td>
@@ -27,6 +27,10 @@
        <%= link_to_remote 'OF', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "OF"}, :update => "search_hits" %>
        <%= link_to_remote 'SP', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "SP"}, :update => "search_hits" %>
        <%= link_to_remote 'RP', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "RP"}, :update => "search_hits" %>
+       <%= link_to_remote 'Batters', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "Batters"}, :update => "search_hits" %>
+       <%= link_to_remote 'Pitchers', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :fieldPosition => "P"}, :update => "search_hits" %>
+       <%= link_to_remote 'ALL', :url => {:action => 'searchbypos', :sortOrder => "rank asc"}, :update => "search_hits" %>
+
     <br />
     Show by team:     
     <%= link_to_remote 'ARI', :url => {:action => 'searchbypos', :sortOrder => "rank asc", :team => "ARI"}, :update => "search_hits" %>
@@ -53,4 +57,12 @@
     <% end %>
     
 <div id="search_hits">
+<%=
+   @players = Player.find(:all, 
+   :conditions => [ "picks.id IS NULL" ],
+   :order => [ "rank asc"], 
+   :include => [:pick],
+   :joins => 'LEFT JOIN picks ON players.id=picks.id')
+   render :partial => "search"
+%>
 </div>

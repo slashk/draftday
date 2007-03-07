@@ -1,4 +1,4 @@
-<h1>Players </h1>
+<h2><img src="/images/assy.gif" width=30 height=30> DraftDay </h2>
 <p>Show by position: 
     <%= link_to 'ALL', :action => 'list' %>
     <%= link_to 'C', :action => 'list', :sortOrder => "rank asc", :fieldPosition => "C" %>
@@ -28,11 +28,58 @@ Show by team:
 <%= link_to 'SF', :action => 'list', :sortOrder => "rank asc", :team => "SF" %>
 <%= link_to 'STL', :action => 'list', :sortOrder => "rank asc", :team => "STL" %>
 <%= link_to 'WAS', :action => 'list', :sortOrder => "rank asc", :team => "WAS" %>
+<br />
+Show by franchise:        
+<% for team in @teams %>
+  <%= link_to team.short_name, :action => 'list', :team => team.id %>
+<% end %>
 </p>
 
-
-<div id="search_hits"></div>
-
-<br />
-<%= @players.size %> players found. F. López.
-<br />
+<table width="100%" cellpadding=0 cellspacing=0>
+  <tr>
+    <th align="left"><%= link_to 'ID',:action => 'list',:sortOrder => "players.id",:fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="left"><%= link_to 'Player', :action => 'list',:sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="center"><%= link_to 'Team', :action => 'list',:sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="center"><%= link_to 'Rank', :action => 'list',:sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="center"><%= link_to 'O-Rank', :action => 'list',:sortOrder => "orank asc", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <!-- <th align="center"><%= link_to 'Y!',:action => 'list',:sortOrder => "yahoo_ref asc", :fieldPosition => params[:fieldPosition] %></th> -->
+    <th align="center"><%= link_to 'Pos', :action => 'list',:sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="right"><%= link_to 'R', :action => 'list',:sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'HR', :action => 'list',:sortOrder => "hr desc", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="right"><%= link_to 'RBI', :action => 'list', :sortOrder => "rbi desc", :fieldPosition => params[:fieldPosition], :team => params[:team] %></th>
+    <th align="right"><%= link_to 'SB', :action => 'list', :sortOrder => "sb desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'AVG', :action => 'list', :sortOrder => "avg desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'IP', :action => 'list', :sortOrder => "ip desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'W', :action => 'list', :sortOrder => "w desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'SV', :action => 'list', :sortOrder => "sv desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'K', :action => 'list', :sortOrder => "k desc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'ERA', :action => 'list', :sortOrder => "era asc", :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+    <th align="right"><%= link_to 'WHIP', :action => 'list', :sortOrder => "whip asc",  :fieldPosition => params[:fieldPosition], :team => params[:team]  %></th>
+</tr>
+<% if @players.empty? %>
+  '<%=h @phrase %>' not found!
+<% else %>
+<% for player in @players %>
+  <tr class="ListLine<%= cycle("1", "0") %>">
+    <td align="left"><%=h player.id  %></td>
+    <td align="left"><a href="http://sports.yahoo.com/mlb/players/<%=h player.yahoo_ref %>" target="_blank"><%=h player.player  %></a></td>
+    <td align="center"><%=h player.team.upcase  %></td>
+    <td align="center"><%=h player.rank  %></td>
+    <td align="center"><%=h player.orank  %></td>
+    <!-- ><td align="center"><%=h player.yahoo_ref  %></td> -->
+    <td align="center"><%=h player.pos  %></td>
+    <td align="right"><%=h player.R  %></td>
+    <td align="right"><%=h player.HR  %></td>
+    <td align="right"><%=h player.RBI  %></td>
+    <td align="right"><%=h player.SB  %></td>
+    <td align="right"><%=h sprintf("%0.3f",player.AVG) if (player.AVG!=nil)  %></td>
+    <td align="right"><%=h player.IP  %></td>
+    <td align="right"><%=h player.W  %></td>
+    <td align="right"><%=h player.SV  %></td>
+    <td align="right"><%=h player.K  %></td>
+    <td align="right"><%=h sprintf("%.2f",player.ERA) if (player.ERA!=nil) %></td>
+    <td align="right"><%=h sprintf("%.2f",player.WHIP) if (player.WHIP!=nil)  %></td>
+  </tr>
+<% end %>
+</table>  
+<% end %>

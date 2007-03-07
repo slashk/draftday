@@ -7,6 +7,7 @@
     <th align="left">Player</th>
     <th align="center">MLB Team</th>
     <th align="center">Pos</th>  
+    <th align="center">ID</th>
   </tr>
   
 <% for pick in @picks %>
@@ -16,6 +17,7 @@
     <td><%=h pick.player.player unless pick.player.nil? %></td> 
     <td align="center"><%=h pick.player.team unless pick.player.nil? %></td> 
     <td align="center"><%=h pick.player.pos unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.id unless pick.player.nil? %></td> 
     <td><%= link_to 'Show', :action => 'show', :id => pick %> 
     <%= link_to 'Edit', :action => 'edit', :id => pick %> 
   </tr>

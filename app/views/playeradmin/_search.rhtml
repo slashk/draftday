@@ -4,6 +4,7 @@
     <th align="left"><%= link_to_remote 'Player',:url => {:action => 'searchbypos',:sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="center"><%= link_to_remote 'Team',:url => {:action => 'searchbypos',:sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="center"><%= link_to_remote 'Rank',:url => {:action => 'searchbypos',:sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'O-Rank',:url => {:action => 'searchbypos',:sortOrder => "orank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <!-- <th align="center"><%= link_to 'Y!',:action => 'searchbypos',:sortOrder => "yahoo_ref asc", :fieldPosition => params[:fieldPosition] %></th> -->
     <th align="center"><%= link_to_remote 'Pos',:url => {:action => 'searchbypos',:sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="right"><%= link_to_remote 'R',:url => {:action => 'searchbypos',:sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
@@ -25,9 +26,10 @@
 <% for player in @players %>
   <tr class="ListLine<%= cycle("1", "0") %>">
     <td align="left"><%=h player.id  %></td>
-    <td align="left"><a href="http://sports.yahoo.com/mlb/players/<%=h player.yahoo_ref %>"><%=h player.player  %></a></td>
+    <td align="left"><a href="http://sports.yahoo.com/mlb/players/<%=h player.yahoo_ref %>" target="_blank"><%=h player.player  %></a></td>
     <td align="center"><%=h player.team.upcase  %></td>
     <td align="center"><%=h player.rank  %></td>
+    <td align="center"><%=h player.orank  %></td>
     <!-- ><td align="center"><%=h player.yahoo_ref  %></td> -->
     <td align="center"><%=h player.pos  %></td>
     <td align="right"><%=h player.R  %></td>

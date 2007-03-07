@@ -72,7 +72,7 @@ class DraftadminController < ApplicationController
     #numberOfTeams = params[:teamCount]
     numberOfRounds = 10
     #numberOfTeams = Team.find_all
-    numberOfTeams = 9
+    numberOfTeams = Team.count
     #draftType = params[:draftType]
     draftType = 1
     numberOfPicks = numberOfRounds * numberOfTeams

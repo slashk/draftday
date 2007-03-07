@@ -8,6 +8,11 @@
 <%= text_field 'pick', 'player_id'  %></p>
 
 <p><label for="pick_team">Team</label><br/>
-<%= text_field 'pick', 'team_id'  %></p>
+<%= 
+@teams = Team.find(:all, :order => "short_name")
+collection_select(:pick, :team_id, @teams, :id, :short_name) 
+%> <br />
+
+
 
 <!--[eoform:pick]-->
