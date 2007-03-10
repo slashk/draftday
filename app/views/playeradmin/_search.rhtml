@@ -1,23 +1,22 @@
 <table width="100%" cellpadding=0 cellspacing=0>
   <tr>
-    <th align="left"><%= link_to_remote 'ID',:url => {:action => 'searchbypos',:sortOrder => "players.id",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="left"><%= link_to_remote 'Player',:url => {:action => 'searchbypos',:sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="center"><%= link_to_remote 'Team',:url => {:action => 'searchbypos',:sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="center"><%= link_to_remote 'Rank',:url => {:action => 'searchbypos',:sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="center"><%= link_to_remote 'O-Rank',:url => {:action => 'searchbypos',:sortOrder => "orank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <!-- <th align="center"><%= link_to 'Y!',:action => 'searchbypos',:sortOrder => "yahoo_ref asc", :fieldPosition => params[:fieldPosition] %></th> -->
-    <th align="center"><%= link_to_remote 'Pos',:url => {:action => 'searchbypos',:sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="right"><%= link_to_remote 'R',:url => {:action => 'searchbypos',:sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'HR',:url => {:action => 'searchbypos',:sortOrder => "hr desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="right"><%= link_to_remote 'RBI',:url => {:action => 'searchbypos', :sortOrder => "rbi desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="right"><%= link_to_remote 'SB',:url => {:action => 'searchbypos', :sortOrder => "sb desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'AVG',:url => {:action => 'searchbypos', :sortOrder => "avg desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'IP',:url => {:action => 'searchbypos', :sortOrder => "ip desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'W',:url =>  {:action => 'searchbypos', :sortOrder => "w desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'SV',:url => {:action => 'searchbypos', :sortOrder => "sv desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'K',:url => {:action => 'searchbypos', :sortOrder => "k desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'ERA',:url => {:action => 'searchbypos', :sortOrder => "era asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
-    <th align="right"><%= link_to_remote 'WHIP',:url => {:action => 'searchbypos', :sortOrder => "whip asc",  :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="left"><%= link_to_remote 'ID',:url => {:action => 'search', :sortOrder => "players.id",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="left"><%= link_to_remote 'Player',:url => {:action => 'search',:sortType => "normal", :sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Team',:url => {:action => 'search',:sortType => "normal", :sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Rank',:url => {:action => 'search',:sortType => "normal", :sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'O-Rank',:url => {:action => 'search',:sortType => "normal", :sortOrder => "orank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Pos',:url => {:action => 'search',:sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'R',:url => {:action => 'search',:sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'HR',:url => {:action => 'search',:sortOrder => "hr desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'RBI',:url => {:action => 'search', :sortOrder => "rbi desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="right"><%= link_to_remote 'SB',:url => {:action => 'search', :sortOrder => "sb desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'AVG',:url => {:action => 'search', :sortOrder => "avg desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'IP',:url => {:action => 'search', :sortOrder => "ip desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'W',:url =>  {:action => 'search', :sortOrder => "w desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'SV',:url => {:action => 'search', :sortOrder => "sv desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'K',:url => {:action => 'search', :sortOrder => "k desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'ERA',:url => {:action => 'search', :sortOrder => "era asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="right"><%= link_to_remote 'WHIP',:url => {:action => 'search', :sortOrder => "whip asc",  :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
 </tr>
 
 <% if @players.empty? %>

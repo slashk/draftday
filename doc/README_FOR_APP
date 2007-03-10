@@ -1,2 +1,19 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake appdoc" to generate API documentation for your models and controllers.
+
+BUGS:
+	1. Drafting a player that does not exist causes an error : Mysql::Error: Cannot add or update a child row: a foreign key constraint fails (`draftday_development/picks`, CONSTRAINT `fk_picks_players` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)): INSERT INTO picks (`team_id`, `player_id`, `pick_number`) VALUES(4, 1163, 2)
+	
+	2. Drafted players don't seem to disappear from available players list. This is a problem with the query and creation of :conditions. The correct query is:
+	mysql# select * from players LEFT JOIN picks ON players.id=picks.player_id where picks.id is null;
+	The LIST, LIVE_SEARCH and SEARCHBYPOS routines need to be refactored. They should probably be merged (or one for HTML and one for AJAX) and use a case statement to construct SQL query.
+	
+TEST PLAN
+	Players
+		1. 
+		
+	Drafts
+		1. Create draft, drop draft, recreated draft
+		2. draft player, undraft player, redraft player
+			draft player check to see he's not in player list
+		3. 

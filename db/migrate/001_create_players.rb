@@ -8,14 +8,14 @@ class CreatePlayers < ActiveRecord::Migration
       t.column :team,     :string
       t.column :pos,      :string
       t.column :status,   :string
-      t.column :rank,     :integer
+      t.column :rank,     :integer, :default => 1300
       t.column :IP,       :real
       t.column :W,        :integer
       t.column :SV,       :integer
       t.column :K,        :integer
       t.column :ERA,      :real
       t.column :WHIP,     :real
-      t.column :R,        :real
+      t.column :R,        :integer
       t.column :HR,       :integer
       t.column :RBI,      :integer
       t.column :SB,       :integer

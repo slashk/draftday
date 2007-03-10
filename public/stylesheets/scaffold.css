@@ -78,3 +78,12 @@ div.progressBar div.background {
 .ListLine1 {
 	background-color: lightgrey;
 }
+
+div#asshead {
+	background-color: lightgrey; 
+	color: maroon;
+	border-style: dotted;
+	border-color: black;
+	border-width: 1px;
+	padding-left: 20px;
+}

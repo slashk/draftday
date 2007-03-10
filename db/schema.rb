@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.column "K", :integer
     t.column "ERA", :float
     t.column "WHIP", :float
-    t.column "R", :float
+    t.column "R", :integer
     t.column "HR", :integer
     t.column "RBI", :integer
     t.column "SB", :integer
