@@ -537,3 +537,5 @@ INSERT INTO players (yahoo_ref,Player,Team,Pos,ORank,Rank,IP,W,SV,K,ERA,WHIP) VA
 ('7286','John Van Benschoten','Pit','SP','709','','','','','','',''),
 ('7080','Luis Ayala','Was','RP','609','','','','','','',''),
 ('7394','Merkin Valdez','SF','RP','752','','','','','','','');
+
+update players set rank=1300 where rank=0;

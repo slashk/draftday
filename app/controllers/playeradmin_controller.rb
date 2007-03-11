@@ -1,4 +1,5 @@
 class PlayeradminController < ApplicationController
+  # $Id$
   def index
     #list
     #@teams = Team.find(:all)

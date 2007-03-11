@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.column "team", :string
     t.column "pos", :string
     t.column "status", :string
-    t.column "rank", :integer
+    t.column "rank", :integer, :default => 1300
     t.column "IP", :float
     t.column "W", :integer
     t.column "SV", :integer

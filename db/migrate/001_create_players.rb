@@ -8,7 +8,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.column :team,     :string
       t.column :pos,      :string
       t.column :status,   :string
-      t.column :rank,     :integer, :default => 1300
+      t.column :rank,     :integer, :default => "1300"
       t.column :IP,       :real
       t.column :W,        :integer
       t.column :SV,       :integer

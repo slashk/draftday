@@ -28,7 +28,7 @@ class DraftadminController < ApplicationController
   def create
     # I think we need to validate foreign keys here
     # make sure playerid is a number and a foreign key
-    # make sure team id is a foreign key and a number
+    # need to wrap @validPlayer = Player.find(params[:pick][:player_id]) with some kind of try ... catch routine
     @pick = Pick.new(params[:pick])
     if @pick.save
       flash[:notice] = 'Pick was successfully created.'
