@@ -1,3 +1,4 @@
+<% if session[:user] %>
 <table width="100%">
 <tr valign="top"><td>
     Show by position:
@@ -53,14 +54,19 @@
                  :url => { :action => :live_search }) 
 %>
 </td></tr></table>    
+<% end %>
 
 <div id="search_hits">
 <%=
-   @players = Player.find(:all, 
-   :conditions => [ "picks.id IS NULL" ],
-   :order => [ "rank asc"], 
-   :include => [:pick],
-   :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
-   render :partial => "search"
+   if logged_in? 
+     @players = Player.find(:all, 
+      :conditions => [ "picks.id IS NULL" ],
+      :order => [ "rank asc"], 
+      :include => [:pick],
+      :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
+      render :partial => "search"
+    else
+      render :partial => "login"
+    end
 %>
 </div>

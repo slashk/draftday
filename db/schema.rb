@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "picks", :force => true do |t|
     t.column "player_id", :integer, :default => 0, :null => false
@@ -42,12 +42,28 @@ ActiveRecord::Schema.define(:version => 7) do
   add_index "players", ["team"], :name => "players_team_index"
   add_index "players", ["rank"], :name => "players_rank_index"
 
+  create_table "sessions", :force => true do |t|
+    t.column "session_id", :string
+    t.column "data", :text
+    t.column "updated_at", :datetime
+  end
+
+  add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
+
   create_table "teams", :force => true do |t|
     t.column "full_name", :string
     t.column "short_name", :string
     t.column "owner", :string
     t.column "team_yahoo_ref", :integer
     t.column "draft_order", :integer, :default => 1
+  end
+
+  create_table "users", :force => true do |t|
+    t.column "login", :string
+    t.column "password", :string
+    t.column "email", :string
+    t.column "team_id", :integer
+    t.column "role", :string
   end
 
 end

@@ -96,3 +96,12 @@ div#left {
 div#right {
   text-align: right;
 }
+
+form#login_form {
+	border: 1px solid #ccc;
+	padding: 3px;
+}
+
+form#login_form_label {
+	font-size: 80%;
+}

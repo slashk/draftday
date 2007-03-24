@@ -2,7 +2,8 @@
 module ApplicationHelper
   def is_admin?
     # check to see if session[:user] is an admin
-    return true
+    return true if session[:user].role == "admin"
+    return false
   end
   
   def logged_in?
