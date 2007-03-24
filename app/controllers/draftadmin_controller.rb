@@ -11,14 +11,10 @@ class DraftadminController < ApplicationController
   def list
     #@pick_pages, @picks = paginate :picks, :per_page => 25
     @picks = Pick.find_all
-    @players = Player.find_all
-    @teams = Team.find_all
   end
 
   def show
     @pick = Pick.find(params[:id])
-    @players = Player.find_all
-    @teams = Team.find_all
   end
 
   def new
@@ -45,9 +41,16 @@ class DraftadminController < ApplicationController
 
   def update
     @pick = Pick.find(params[:id])
+    # how do we check for duplicate draft choices ?
+    #@dummy=params[:pick]
+    #@draftees = Pick.count(:conditions => ["player_id=?", @dummy.player_id ]) 
+    #if @draftees > 0
+      #flash[:notice] = 'Player already drafted.'
+      #redirect_to :action => 'list'
     if @pick.update_attributes(params[:pick])
       flash[:notice] = 'Pick was successfully updated.'
-      redirect_to :action => 'show', :id => @pick
+      #redirect_to :action => 'show', :id => @pick
+      redirect_to :action => 'list'
     else
       render :action => 'edit'
     end
@@ -70,7 +73,7 @@ class DraftadminController < ApplicationController
     #drop_table("picks")
     
     #numberOfTeams = params[:teamCount]
-    numberOfRounds = 10
+    numberOfRounds = 18
     #numberOfTeams = Team.find_all
     numberOfTeams = Team.count
     #draftType = params[:draftType]
@@ -91,7 +94,7 @@ class DraftadminController < ApplicationController
         else
           teamOnThePodium = n
         end
-        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n, :team_id => teamOnThePodium)
+        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n, :team_id => teamOnThePodium, :player_id => 0)
         @pick.save!
       }
     }
@@ -104,9 +107,12 @@ class DraftadminController < ApplicationController
   end
   
   def scrollDraft
-    @picks = Pick.find(:all, :order => "pick_number DESC")
-    @players = Player.find_all
-    @teams = Team.find_all
+    # find the number of teams, then find the number of players chosen
+    # show only the drafted players plus the next (number of teams) rounds
+    @futurepicks = Team.count
+    @currentdraftee = Pick.count(:conditions => "player_id > 0")
+    @currentdraftee = @futurepicks + @currentdraftee
+    @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
     render :partial => "search"
   end
   

@@ -20,10 +20,12 @@
     <td align="center"><%=h pick.player.id unless pick.player.nil? %></td> 
     <td><%= link_to 'Show', :action => 'show', :id => pick %> 
     <%= link_to 'Edit', :action => 'edit', :id => pick %> 
+    <%= link_to 'Destroy', :action => 'destroy', :id => pick %> 
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New pick', :action => 'new' %>
+<%= link_to 'New pick', :action => 'new' %><br />
+<%= link_to "Seed New Draft", :controller => "draftadmin", :action => "setDraft" %>

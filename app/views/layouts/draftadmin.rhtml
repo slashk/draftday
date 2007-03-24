@@ -6,7 +6,18 @@
 </head>
 <body>
 
+<div id="asshead">
+<img src="/images/assy.gif" width=30 height=30> DraftDay
+<span style="text-align:right;">
+<%= link_to "Players", :controller => "playeradmin", :action => "live" %>
+Picks
+<%= link_to "Teams", :controller => "teamadmin", :action => "list" %>
+</span>
+</div>
+
 <p style="color: green"><%= flash[:notice] %></p>
+
+
 
 <%= yield  %>
 

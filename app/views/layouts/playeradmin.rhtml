@@ -6,7 +6,14 @@
 </head>
 <body>
 
-<div id="asshead"><h1><img src="/images/assy.gif" width=30 height=30> DraftDay</h1></div>
+<div id="asshead">
+<img src="/images/assy.gif" width=30 height=30> DraftDay
+<span style="text-align:right;">
+Players
+<%= link_to "Picks", :controller => "draftadmin", :action => "live" %>
+<%= link_to "Teams", :controller => "teamadmin", :action => "list" %>
+</span>
+</div>
 
 <p style="color: green"><%= flash[:notice] %></p>
 

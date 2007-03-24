@@ -7,4 +7,12 @@
 :before => "Element.show('spinner')", 
 :complete => "Element.hide('spinner')" %> 
 
-<div id="draft_live"></div>
+<div id="draft_live">
+<%=
+  @futurepicks = Team.count
+  @currentdraftee = Pick.count(:conditions => "player_id > 0")
+  @currentdraftee = @futurepicks + @currentdraftee
+  @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
+  render :partial => "search"
+%>
+</div>

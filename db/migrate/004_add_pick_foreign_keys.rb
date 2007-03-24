@@ -1,8 +1,5 @@
 class AddPickForeignKeys < ActiveRecord::Migration
   def self.up
-    execute "alter table picks 
-     add constraint fk_picks_players 
-     foreign key (player_id) references players(id)"
 
      execute "alter table picks 
      add constraint fk_picks_teams 

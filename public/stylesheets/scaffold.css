@@ -87,3 +87,12 @@ div#asshead {
 	border-width: 1px;
 	padding-left: 20px;
 }
+
+div#left {
+	text-align: left;
+  
+}
+
+div#right {
+  text-align: right;
+}
