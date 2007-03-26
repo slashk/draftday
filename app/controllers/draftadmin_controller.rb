@@ -72,6 +72,8 @@ class DraftadminController < ApplicationController
     # set up iterator. We need to take params[:numberOfRounds] x find.count[:team_id] and then iterate through them in draft order
     #drop_table("picks")
     
+    # find current pick and add to it
+    currentDraftSlot = Pick.count
     #numberOfTeams = params[:teamCount]
     numberOfRounds = 18
     #numberOfTeams = Team.find_all
@@ -94,16 +96,14 @@ class DraftadminController < ApplicationController
         else
           teamOnThePodium = n
         end
-        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n, :team_id => teamOnThePodium, :player_id => 0)
+        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n + (currentDraftSlot+1), :team_id => teamOnThePodium, :player_id => 0)
         @pick.save!
       }
     }
-    flash[:notice] = 'Draft created successfully.'
-    redirect_to :action => 'list'
-    
-    # inside iterator, create new pick with pick_number and team_id (don't use create method)
     # flash success
     # dump onto pickadmin screen
+    flash[:notice] = 'Draft created successfully.'
+    redirect_to :action => 'list'    
   end
   
   def scrollDraft

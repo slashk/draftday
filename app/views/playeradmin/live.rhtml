@@ -1,6 +1,6 @@
 <% if session[:user] %>
 <table width="100%">
-<tr valign="top"><td>
+<tr valign="top"><td width="60%">
     Show by position:
        <%= link_to_remote 'C', :url => {:action => 'search', :fieldPosition => "C"}, :update => "search_hits" %>
        <%= link_to_remote '1B', :url => {:action => 'search', :fieldPosition => "1B"}, :update => "search_hits" %>
@@ -40,11 +40,9 @@
     <% end %>
 </td><td>
 
-<%= start_form_tag({:action=> "search"}, { :onSubmit => "Element.show('spinner');" }) %>
 <label for="searchtext"><font size="1"><b>Search:</b></font></label>
 <%= text_field_tag :searchtext %>
 <img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" />
-<%= end_form_tag%>
 
 <%= observe_field(:searchtext,
                  :frequency => 1,

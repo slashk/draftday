@@ -10,32 +10,75 @@
 # Dump of table picks
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `picks`;
 
-CREATE TABLE `picks` (
-  `id` int(11) NOT NULL auto_increment,
-  `player_id` int(11) default NULL,
-  `team_id` int(11) default NULL,
-  `pick_number` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `fk_picks_players` (`player_id`),
-  KEY `fk_picks_teams` (`team_id`),
-  CONSTRAINT `fk_picks_players` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`),
-  CONSTRAINT `fk_picks_teams` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+# Cows retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('8','1','1');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('11','1','2');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('19','1','3');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('288','1','4');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('273','1','5');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('265','1','6');
 
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('1','1','2','1');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('2','10','3','2');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('3','3','5','3');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('4','4','7','4');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('5','32','9','5');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('6','44','6','9');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('7','35','8','10');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('8','123','8','11');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('9','124','4','12');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('12','175','9','15');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('13','176','9','16');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('14','177','9','17');
-INSERT INTO `picks` (`id`,`player_id`,`team_id`,`pick_number`) VALUES ('15',NULL,'7','22');
+# Coyotes retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('5','2','7');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('25','2','8');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('33','2','9');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('263','2','10');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('281','2','11');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('331','2','12');
 
+# Freds retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','13');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','14');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','15');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','16');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','17');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','3','18');
 
+# Pivos retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','19');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','20');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','21');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','22');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','23');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','4','24');
+
+# Rats retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','25');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','26');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','27');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','28');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','29');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','5','30');
+
+# Treehuggers retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','31');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','32');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','33');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','34');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','35');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','6','36');
+
+# Krunchers retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','37');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','38');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','39');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','40');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','41');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','7','42');
+
+# Possum retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','43');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','44');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','45');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','46');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','47');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','8','48');
+
+# GREMOBY retainees
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','49');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','50');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','51');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','52');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','53');
+INSERT INTO `picks` (`player_id`,`team_id`,`pick_number`) VALUES ('0','9','54');
