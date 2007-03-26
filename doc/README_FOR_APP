@@ -18,6 +18,8 @@ BUGS:
 	3. Fix the "" not found ! bug for searching on playeradmin
 	**** FIX in b21 *****
 	
+	4. If you hit enter in the player live search box, you get an ugly page back. For some reason, the search method will not refresh the page and instead tried to render :partial the _search.
+
 	
 RFEs:
 	XX 1. need user system for preferences and admin priviledges. I am thinking three levels (peon, draftmaster and superuser)
@@ -27,7 +29,7 @@ RFEs:
 		personal ranking
 		projected stats ?
 		depth chart / rotation
-	5. would like to tally franchise stats (projected or 2006) at bottom of franchise search
+	XX 5. would like to tally franchise stats (projected or 2006) at bottom of franchise search
 	-- 6. Perhaps add in MLB team stats page ?
 	7. Create separate screen for franchise 2007 projected / 2006 actual stats accumulation
 	

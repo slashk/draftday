@@ -120,7 +120,7 @@ class PlayeradminController < ApplicationController
       :conditions => @sortConditions,  
       :include => [:pick],
       :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
-    render :partial => "search"    
+    render :partial => "search" 
   end
   
   def summary
