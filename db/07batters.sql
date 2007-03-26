@@ -1,4 +1,4 @@
-INSERT INTO mlb07_batters (yahoo_ref,Player,Team,Pos,ORank,Rank,H,R,HR,RBI,SB,AVG) VALUES
+INSERT INTO mlb07_batters (ID,Player,Team,Pos,ORank,Rank,H,R,HR,RBI,SB,AVG) VALUES
 ('6619','Albert Pujols','StL','1B','1','1','177/535','119','49','137','7','.331'),
 ('7437','Ryan Howard','Phi','1B','5','3','182/581','104','58','149','0','.313'),
 ('6154','Alfonso Soriano','ChC','OF','4','4','179/647','119','46','95','41','.277'),

@@ -1,4 +1,4 @@
-INSERT INTO mlb06_pitchers (yahoo_ref,Player,Team,Pos,ORank,Rank,IP,W,SV,K,ERA,WHIP) VALUES
+INSERT INTO mlb06_pitchers (ID,Player,Team,Pos,ORank,Rank,IP,W,SV,K,ERA,WHIP) VALUES
 ('4232','John Smoltz','Atl','SP','59','26','232.0','16','0','211','3.49','1.19'),
 ('5771','Chris Carpenter','StL','SP','19','30','221.2','15','0','184','3.09','1.07'),
 ('7121','Brandon Webb','Ari','SP','46','31','235.0','16','0','178','3.10','1.13'),
