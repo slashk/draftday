@@ -33,7 +33,7 @@ INSERT INTO `users` VALUES
 (5,'shrek','uncle','combsmj@msn.com',9,'owner'),
 (6,'sharky','uncle','combsmatt@yahoo.com',8,'owner'),
 (7,'strayer','uncle','ronstrayer@msn.com',7,'owner'),
-(8,'spence','uncle','mdspencer@gmail.com',4,'owner');
+(8,'spence','uncle','mdspencer@gmail.com',4,'owner'),
 (9,'fred','uncle','flwilliams87@yahoo.com',3,'owner');
 UNLOCK TABLES;
 
