@@ -1,0 +1,10 @@
+<table width="100%">
+<tr align="left"><th>Team</th><th>HR</th><th>R</th><th>RBI</th><th>SB</th><th>W</th><th>K</th><th>SV</th></tr>
+<% @HR.sort.each {|key, value| %>
+  <tr>
+  <td><%= key %></td><td><%= value %></td><td><%= @R[key] %></td><td><%= @RBI[key] %></td><td><%= @SB[key] %></td>
+  <td><%= @W[key] %></td><td><%= @K[key] %></td><td><%= @SV[key] %></td>
+  </tr> 
+<% } %>
+</table>
+

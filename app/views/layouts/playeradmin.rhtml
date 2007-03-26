@@ -8,17 +8,22 @@
 
 <div id="asshead">
 <table width="100%">
-<tr valign="middle"><td ><h2><img src="/images/assy.gif" width=30 height=30 alt="$Id$"> DraftDay</h2></td>
+<tr valign="middle"><td ><h2><img src="/images/assy.gif" width=30 height=30 alt="ASS Logo" title="$Id$"> DraftDay</h2></td>
 <td style="text-align:right;">
 <% if session[:user] %>
 <%= "Welcome #{session[:user].login} [#{session[:user].role}] !" %> 
 [ <%= link_to "logout", :controller => "user", :action => "logout" %>  ]<br />
-Players
+<%= link_to "Players", :controller => "playeradmin", :action => "live" %>
 <%= 
   if is_admin? 
     link_to "Picks", :controller => "draftadmin", :action => "list"
   else
     link_to "Picks", :controller => "draftadmin", :action => "live"    
+  end
+%>
+<%= 
+  if is_admin? 
+    link_to "Summary", :controller => "playeradmin", :action => "summary"
   end
 %>
 <%= 

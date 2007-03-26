@@ -22,7 +22,7 @@
 </tr>
 
 <% if @players.empty? %>
-  '<%=h @phrase %>' not found!
+  Player <%=h @phrase %> not found!
 <% else %>
 <% for player in @players %>
   <tr class="ListLine<%= cycle("1", "0") %>">

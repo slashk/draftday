@@ -7,12 +7,33 @@
 <body>
 
 <div id="asshead">
-<img src="/images/assy.gif" width=30 height=30> DraftDay
-<span style="text-align:right;">
-<%= link_to "Players", :controller => "playeradmin", :action => "live" %>
-Picks
-<%= link_to "Teams", :controller => "teamadmin", :action => "list" %>
-</span>
+<table width="100%">
+<tr valign="middle"><td ><h2><img src="/images/assy.gif" width=30 height=30 alt="ASS Logo" title="$Id: playeradmin.rhtml 21 2007-03-26 05:19:55Z ken.pepple $"> DraftDay</h2></td>
+<td style="text-align:right;">
+<% if session[:user] %>
+<%= "Welcome #{session[:user].login} [#{session[:user].role}] !" %> 
+[ <%= link_to "logout", :controller => "user", :action => "logout" %>  ]<br />
+Players
+<%= 
+  if is_admin? 
+    link_to "Picks", :controller => "draftadmin", :action => "list"
+  else
+    link_to "Picks", :controller => "draftadmin", :action => "live"    
+  end
+%>
+<%= 
+  if is_admin? 
+    link_to "Teams", :controller => "teamadmin", :action => "list"
+  end
+%>
+<%= 
+  if is_admin? 
+    link_to "Users", :controller => "user", :action => "list"
+  end
+%>
+
+<% end %>
+</td></tr></table>
 </div>
 
 <p style="color: green"><%= flash[:notice] %></p>

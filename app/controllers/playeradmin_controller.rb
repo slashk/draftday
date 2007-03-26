@@ -123,4 +123,24 @@ class PlayeradminController < ApplicationController
     render :partial => "search"    
   end
   
+  def summary
+    @picks = Pick.find(:all, :conditions => 'player_id > 0')
+    @HR = Hash.new
+    @R = Hash.new
+    @SB = Hash.new
+    @RBI = Hash.new
+    @W = Hash.new
+    @K = Hash.new
+    @SV = Hash.new
+    for pick in @picks
+      @HR[pick.team.short_name] = @HR.fetch(pick.team.short_name,0) + pick.player.HR unless pick.player.HR.nil?
+      @R[pick.team.short_name] =  @R.fetch(pick.team.short_name,0) + pick.player.R unless pick.player.R.nil?
+      @SB[pick.team.short_name] = @SB.fetch(pick.team.short_name,0) + pick.player.SB unless pick.player.SB.nil?
+      @RBI[pick.team.short_name] = @RBI.fetch(pick.team.short_name,0) + pick.player.RBI unless pick.player.RBI.nil?
+      @W[pick.team.short_name] = @W.fetch(pick.team.short_name,0) + pick.player.W unless pick.player.W.nil?
+      @K[pick.team.short_name] = @K.fetch(pick.team.short_name,0) + pick.player.K unless pick.player.K.nil?
+      @SV[pick.team.short_name] = @SV.fetch(pick.team.short_name,0) + pick.player.SV unless pick.player.SV.nil?
+    end  
+  end
+  
 end
