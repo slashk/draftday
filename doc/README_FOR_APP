@@ -3,6 +3,26 @@ $Id$
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake appdoc" to generate API documentation for your models and controllers.
 
+BUILD INSTRUCTIONS
+	1. Create the database and sessions
+		# rake db:migrate 
+
+	2. Populate the players
+		# mysql DraftDay < db/create_07_players.sql
+
+	3. Populate the teams
+		# mysql DraftDay < db/create_teams.sql
+
+	4. Populate the users
+		# mysql DraftDay < db/create_users.sql
+
+	5. Populate the picks (retainees)
+		# mysql DraftDay < db/create_picks.sql
+
+	6. Seed the draft by going to the setDraft method
+		http://localhost:3007/draftadmin/setDraft
+
+
 BUGS:
 	*** FIX IN b21 ***
 	1. Drafting a player that does not exist causes an error : Mysql::Error: Cannot add or update a child row: a foreign key constraint fails (`draftday_development/picks`, CONSTRAINT `fk_picks_players` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`)): INSERT INTO picks (`team_id`, `player_id`, `pick_number`) VALUES(4, 1163, 2)

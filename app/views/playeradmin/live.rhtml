@@ -1,6 +1,6 @@
 <% if session[:user] %>
 <table width="100%">
-<tr valign="top"><td width="60%">
+<tr valign="top"><td width="75%">
     Show by position:
        <%= link_to_remote 'C', :url => {:action => 'search', :fieldPosition => "C"}, :update => "search_hits" %>
        <%= link_to_remote '1B', :url => {:action => 'search', :fieldPosition => "1B"}, :update => "search_hits" %>
