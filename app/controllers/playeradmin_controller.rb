@@ -106,6 +106,7 @@ class PlayeradminController < ApplicationController
 	  params[:sortOrder] = "rank asc" if params[:sortOrder].nil?
     @sortConditions = 'picks.id IS NULL '
     params[:sortType] = "normal" if params[:sortType].nil?
+    params[:limits] = "150" if params[:limits].nil?
     case params[:sortType]
       when "normal"
         # start with the base picks.id is NULL string (make only undrafted players show), then add others
@@ -119,6 +120,7 @@ class PlayeradminController < ApplicationController
       :order => params[:sortOrder], 
       :conditions => @sortConditions,  
       :include => [:pick],
+      :limit => params[:limits],
       :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
     render :partial => "search" 
   end
