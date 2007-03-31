@@ -2,13 +2,13 @@
   <tr>
     <th align="left"><%= link_to_remote 'ID',:url => {:action => 'search', :sortOrder => "players.id",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="left"><%= link_to_remote 'Player',:url => {:action => 'search',:sortType => "normal", :sortOrder => "player",:fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="center"><%= link_to_remote 'Team',:url => {:action => 'search',:sortType => "normal", :sortOrder => "team", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
+    <th align="center"><%= link_to_remote 'Team',:url => {:action => 'search',:sortType => "normal", :sortOrder => "team, rank", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="center"><%= link_to_remote 'Rank',:url => {:action => 'search',:sortType => "normal", :sortOrder => "rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="center"><%= link_to_remote 'O-Rank',:url => {:action => 'search',:sortType => "normal", :sortOrder => "orank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="center"><%= link_to_remote 'P-Rank',:url => {:action => 'search',:sortType => "normal", :sortOrder => "prank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" if is_admin? %></th>
     <th align="center"><%= link_to_remote 'Pos',:url => {:action => 'search',:sortType => "normal", :sortOrder => "pos", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
-    <th align="center"><%= link_to_remote 'Depth',:url => {:action => 'search',:sortType => "normal", :sortOrder => "depth", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" if is_admin? %></th>
-    <th align="right"><%= link_to_remote 'R',:url => {:action => 'search',:sortType => "normal", :sortOrder => "r desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <th align="center"><%= link_to_remote 'Depth',:url => {:action => 'search',:sortType => "normal", :sortOrder => "depth, rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" if is_admin? %></th>
+    <th align="right"><%= link_to_remote 'R',:url => {:action => 'search',:sortType => "normal", :sortOrder => "r desc, rank asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
     <th align="right"><%= link_to_remote 'HR',:url => {:action => 'search',:sortType => "normal", :sortOrder => "hr desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="right"><%= link_to_remote 'RBI',:url => {:action => 'search',:sortType => "normal", :sortOrder => "rbi desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits" %></th>
     <th align="right"><%= link_to_remote 'SB',:url => {:action => 'search',:sortType => "normal", :sortOrder => "sb desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
@@ -19,6 +19,9 @@
     <th align="right"><%= link_to_remote 'K',:url => {:action => 'search', :sortType => "normal", :sortOrder => "k desc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
     <th align="right"><%= link_to_remote 'ERA',:url => {:action => 'search', :sortType => "normal", :sortOrder => "era asc", :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
     <th align="right"><%= link_to_remote 'WHIP',:url => {:action => 'search', :sortType => "normal", :sortOrder => "whip asc",  :fieldPosition => params[:fieldPosition], :team => params[:team]}, :update => "search_hits"  %></th>
+    <% if is_admin? %>
+      <th align="right">&nbsp;</th>
+    <% end %>
 </tr>
 
 <% if @players.empty? %>
@@ -45,6 +48,9 @@
     <td align="right"><%=h player.K  %></td>
     <td align="right"><%=h sprintf("%.2f",player.ERA) if (player.ERA!=nil) %></td>
     <td align="right"><%=h sprintf("%.2f",player.WHIP) if (player.WHIP!=nil)  %></td>
+    <% if is_admin? %>
+      <td align="right"> &nbsp; <%= link_to 'Edit', :action => 'edit', :id => player %> </td>
+    <% end %>
   </tr>
 <% end %>
 </table>  
