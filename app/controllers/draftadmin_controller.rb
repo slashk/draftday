@@ -96,7 +96,8 @@ class DraftadminController < ApplicationController
         else
           teamOnThePodium = n
         end
-        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n + (currentDraftSlot), :team_id => teamOnThePodium, :player_id => 0)
+        @y = Team.find(:first, :conditions => ['draft_order = ?', teamOnThePodium])
+        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n + (currentDraftSlot), :team_id => @y.id, :player_id => 0)
         @pick.save!
       }
     }
