@@ -38,8 +38,12 @@ BUGS:
 	3. Fix the "" not found ! bug for searching on playeradmin
 	**** FIX in b21 *****
 	
+	***** FIX in b25 *****
 	4. If you hit enter in the player live search box, you get an ugly page back. For some reason, the search method will not refresh the page and instead tried to render :partial the _search.
-
+	***** FIX in b25 *****
+	
+	5. Pick BATTERS and then sort (like by HR) breaks everything
+		This is basically only for BATTERS because it uses a different :sortType
 	
 RFEs:
 	XX 1. need user system for preferences and admin priviledges. I am thinking three levels (peon, draftmaster and superuser)
@@ -53,9 +57,13 @@ RFEs:
 	-- 6. Perhaps add in MLB team stats page ?
 	7. Create separate screen for franchise 2007 projected / 2006 actual stats accumulation
 	XX 8. make header into partial
-	9. rewrite setDraft so that it APPENDS to already created draft instead of trying to write over it
+	XX 9. rewrite setDraft so that it APPENDS to already created draft instead of trying to write over it
 	10. create webpage to config setDraft
 	11. Added retention controller. Extend player with "last years team" field. Extend player with "years retained" field. Create model for retainees (team_id, player_id). Let players see all people from last year, then check or move retainees into place. Put date check to lock down.
+	12. Change draft admin page to move from pick to pick instead of pick to list to pick
+	13. add migration for projected rankings 
+	14. create projected rankings and summary
+	15. create favorites / tagging 
 	
 TEST PLAN
 	Players

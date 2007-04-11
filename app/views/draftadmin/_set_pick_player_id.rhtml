@@ -1,0 +1,9 @@
+  <tr class="ListLine<%= pick.pick_number % 2 %>" id="draftee<%=h pick.pick_number %>">
+    <td align="left"><input type="button" id="edit_<%= pick.pick_number %>" value="edit"/>  <%=h pick.pick_number %></td>
+    <td><%=h pick.team.short_name unless pick.team.nil? %></td>
+    <td><%=h pick.player.player unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.team unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.pos unless pick.player.nil? %></td> 
+    <td align="center"><%=h pick.player.rank unless pick.player.nil? %></td>  
+    <td align="right"><%= in_place_editor_field :pick, :player_id, {}, { :external_control => "edit_#{pick.pick_number}", :cols => 4} %>  </td> 
+  </tr>

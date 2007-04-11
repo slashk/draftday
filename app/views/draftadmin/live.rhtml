@@ -2,12 +2,12 @@
 
 <%= periodically_call_remote :url => {:action => 'scrollDraft'}, 
 :update => :draft_live, 
-:frequency => 30, 
+:frequency => 15, 
 :condition => 1,
-:before => "Element.show('spinner')", 
-:complete => "Element.hide('spinner')" %> 
+:before => "Element.show('spinner')",
+:complete => "Element.hide('spinner')"
+%> 
 
-<div id="draft_live">
 <%=
   @futurepicks = Team.count
   @currentdraftee = Pick.count(:conditions => "player_id > 0")
@@ -15,4 +15,3 @@
   @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
   render :partial => "search"
 %>
-</div>

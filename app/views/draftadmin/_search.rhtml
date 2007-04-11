@@ -1,4 +1,5 @@
+<div id="draft_live">
 <% for pick in @picks %>
-  <span class="ListLine<%= cycle("1","0") %>"><%=h pick.pick_number %>. <%=h pick.player.player unless pick.player.nil? %> 
-  (<%=h pick.team.short_name unless pick.team.nil? %><%=h " - " + pick.player.pos unless pick.player.nil? %></td>)</span><br />
+  <div id="draftee<%= pick.pick_number %>"><%=h pick.pick_number %>. <%=h pick.player.player unless pick.player.nil? %> (<%=h pick.team.short_name unless pick.team.nil? %><%=h " - " + pick.player.pos unless pick.player.nil? %>)</div>
 <% end %>
+</div>

@@ -1,4 +1,6 @@
 class DraftadminController < ApplicationController
+  in_place_edit_for :pick, :player_id
+  
   def index
     list
     render :action => 'list'
@@ -75,7 +77,7 @@ class DraftadminController < ApplicationController
     # find current pick and add to it
     currentDraftSlot = Pick.count
     #numberOfTeams = params[:teamCount]
-    numberOfRounds = 18
+    numberOfRounds = 15
     #numberOfTeams = Team.find_all
     numberOfTeams = Team.count
     #draftType = params[:draftType]
@@ -114,8 +116,24 @@ class DraftadminController < ApplicationController
     @currentdraftee = Pick.count(:conditions => "player_id > 0")
     @currentdraftee = @futurepicks + @currentdraftee
     @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
-    render :partial => "search"
+    # instead of usual render :partial => "search" use the scriptalicious AJAXy way
+    render :update do |page| 
+      page.replace "draft_live", :partial => "search"
+      page.visual_effect :highlight, "draft_live", :duration => 2
+    end
   end
   
+  def set_pick_player_id
+    @pick = Pick.find(params[:id])
+    previous_name = @pick.player_id
+    @pick.player_id = params[:value]
+    # need to error check here. can't pick player already chosen.
+    @pick.player_id = previous_name unless @pick.save
+    currentLine = "draftee#{@pick.pick_number}"
+    render :update do |page| 
+      page.replace currentLine, :partial => "set_pick_player_id", :locals => {:pick => @pick}
+      page.visual_effect :highlight, currentLine, :duration => 2
+    end
+  end
   
 end

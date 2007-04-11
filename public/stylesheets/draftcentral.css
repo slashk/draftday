@@ -1,4 +1,8 @@
 body { background-color: #fff; color: #333; }
 
-h2 {background-color: gray;}
+h2 {
+	background-color: gray;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-style: normal;
+}
 
