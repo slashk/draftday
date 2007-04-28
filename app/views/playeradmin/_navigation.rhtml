@@ -7,16 +7,11 @@
 <%= link_to "Players", :controller => "playeradmin", :action => "live" %>
 <%= 
   if is_admin? 
-    link_to "Picks", :controller => "draftadmin", :action => "list"
-  else
-    link_to "Picks", :controller => "draftadmin", :action => "live"    
+    link_to "Commish", :controller => "draftadmin", :action => "list"
   end
 %>
-<%= 
-  if is_admin? 
-    link_to "Summary", :controller => "playeradmin", :action => "summary"
-  end
-%>
+<%= link_to "Picks", :controller => "draftadmin", :action => "live"    %>
+<%=     link_to "Projection", :controller => "playeradmin", :action => "summary" %>
 <%= 
   if is_admin? 
     link_to "Teams", :controller => "teamadmin", :action => "list"

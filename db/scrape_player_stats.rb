@@ -3,9 +3,10 @@
 #  Created by Ken Pepple on 2007-04-10.
 #  Copyright (c) 2007. All rights reserved.
 
-require "html/xmltree"
+#require "html/xmltree"
 
 client=HTTPAccess2::Client.new
+#url="http://www.elliottbaybook.com/"
 url="http://www.elliottbaybook.com/"
 parser = HTMLTree::XMLParser.new(false,false)
 parser.feed(client.getContent(url))

@@ -1,5 +1,5 @@
 class PlayeradminController < ApplicationController
-  # $Id$
+  
   def index
     #list
     #@teams = Team.find(:all)
@@ -107,14 +107,23 @@ class PlayeradminController < ApplicationController
     @sortConditions = 'picks.id IS NULL '
     params[:sortType] = "normal" if params[:sortType].nil?
     params[:limits] = "100" if params[:limits].nil?
-    case params[:sortType]
-      when "normal"
-        # start with the base picks.id is NULL string (make only undrafted players show), then add others
-    	  @sortConditions = @sortConditions + ' AND players.pos like "%' + params[:fieldPosition] + '%"' unless params[:fieldPosition].nil?
-    	  @sortConditions = @sortConditions + ' AND players.team like "%' + params[:team] + '%"' unless params[:team].nil?
-    	when "batters"
-        @sortConditions = @sortConditions + 'AND players.pos not like "%P%"'
+    # start with the base picks.id is NULL string (make only undrafted players show), then add others
+    unless params[:fieldPosition].nil?
+      case params[:fieldPosition]
+        when "ALL"
+          # don't add anything to sort conditions
+        when "BATTERS"
+          # add not pitchers clause
+          @sortConditions = @sortConditions + 'AND players.pos not like "%P%"'
+        when "PITCHERS"
+          # add pitchers clause
+          @sortConditions = @sortConditions + 'AND players.pos like "%P%"'
+        else
+          @sortConditions = @sortConditions + ' AND players.pos like "%' + params[:fieldPosition] + '%"'
+      end
     end
+    # add in the team condition to the sort
+  	@sortConditions = @sortConditions + ' AND players.team like "%' + params[:team] + '%"' unless params[:team].nil?
     # make the query
     @players = Player.find(:all, 
       :order => params[:sortOrder], 

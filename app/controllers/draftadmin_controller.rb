@@ -12,7 +12,7 @@ class DraftadminController < ApplicationController
 
   def list
     #@pick_pages, @picks = paginate :picks, :per_page => 25
-    @picks = Pick.find_all
+    @picks = Pick.find(:all)
   end
 
   def show
@@ -78,7 +78,6 @@ class DraftadminController < ApplicationController
     currentDraftSlot = Pick.count
     #numberOfTeams = params[:teamCount]
     numberOfRounds = 15
-    #numberOfTeams = Team.find_all
     numberOfTeams = Team.count
     #draftType = params[:draftType]
     draftType = 1

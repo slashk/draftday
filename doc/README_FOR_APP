@@ -8,16 +8,16 @@ BUILD INSTRUCTIONS
 		# rake db:migrate 
 
 	2. Populate the players
-		# mysql DraftDay < db/create_07_players.sql
+		# mysql DraftDay_development < db/create_07_players.sql
 
 	3. Populate the teams
-		# mysql DraftDay < db/create_teams.sql
+		# mysql DraftDay_development < db/create_teams.sql
 
 	4. Populate the users
-		# mysql DraftDay < db/create_users.sql
+		# mysql DraftDay_development < db/create_users.sql
 
 	5. Populate the picks (retainees)
-		# mysql DraftDay < db/create_picks.sql
+		# mysql DraftDay_development < db/create_picks.sql
 
 	6. Seed the draft by going to the setDraft method
 		http://localhost:3007/draftadmin/setDraft
@@ -60,10 +60,12 @@ RFEs:
 	XX 9. rewrite setDraft so that it APPENDS to already created draft instead of trying to write over it
 	10. create webpage to config setDraft
 	11. Added retention controller. Extend player with "last years team" field. Extend player with "years retained" field. Create model for retainees (team_id, player_id). Let players see all people from last year, then check or move retainees into place. Put date check to lock down.
-	12. Change draft admin page to move from pick to pick instead of pick to list to pick
+	XX 12. Change draft admin page to move from pick to pick instead of pick to list to pick
 	13. add migration for projected rankings 
 	14. create projected rankings and summary
 	15. create favorites / tagging 
+	16. Highlight users picks in the real-time scrolling draft (live)
+	17. fix BA printf problem (kill fronting zero)
 	
 TEST PLAN
 	Players

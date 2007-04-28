@@ -11,4 +11,10 @@ module ApplicationHelper
     return false
   end
   
+  def ba(average)
+    # we assume that you will get a float that looks like this 0.342
+    # need to convert from float to string then substring it
+    return average[1..3]
+  end
+  
 end
