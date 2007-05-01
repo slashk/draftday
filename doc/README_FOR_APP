@@ -42,8 +42,11 @@ BUGS:
 	4. If you hit enter in the player live search box, you get an ugly page back. For some reason, the search method will not refresh the page and instead tried to render :partial the _search.
 	***** FIX in b25 *****
 	
+	***** FIX in 35 ****
 	5. Pick BATTERS and then sort (like by HR) breaks everything
 		This is basically only for BATTERS because it uses a different :sortType
+	***** FIX in 35 ****
+
 	
 RFEs:
 	XX 1. need user system for preferences and admin priviledges. I am thinking three levels (peon, draftmaster and superuser)
@@ -66,10 +69,16 @@ RFEs:
 	15. create favorites / tagging 
 	16. Highlight users picks in the real-time scrolling draft (live)
 	17. fix BA printf problem (kill fronting zero)
+	18. Refactor main playeradmin page to use arrays to simplify code
+	19. figure out verification issue with drafting players (i.e. don't draft players who are already drafted or don't exist)
+	20. Figure out formatting for BA (you putz)
+	21. Make it pretty
+	22. Update summary method to use the new pHR (projected stats) schema
 	
 TEST PLAN
 	Players
-		1. 
+		1. create player, modify player, delete player
+		2. 
 		
 	Drafts
 		1. Create draft, drop draft, recreated draft

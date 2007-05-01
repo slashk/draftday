@@ -29,7 +29,13 @@
 <% else %>
 <% for player in @players %>
   <tr class="ListLine<%= cycle("1", "0") %>">
-    <td align="left"><%=h player.id  %></td>
+    <td align="left">
+    <% if is_admin? %>
+      <%= link_to player.id, :action => 'edit', :id => player %>
+    <% else %>
+      <%=h player.id %>
+    <% end %>
+    </td>
     <td align="left"><a href="http://sports.yahoo.com/mlb/players/<%=h player.yahoo_ref %>" target="_blank"><%=h player.player  %></a></td>
     <td align="center"><%=h player.team.upcase  %></td>
     <td align="center"><%=h player.rank  %></td>
@@ -48,9 +54,6 @@
     <td align="right"><%=h player.K  %></td>
     <td align="right"><%=h sprintf("%.2f",player.ERA) if (player.ERA!=nil) %></td>
     <td align="right"><%=h sprintf("%.2f",player.WHIP) if (player.WHIP!=nil)  %></td>
-    <% if is_admin? %>
-      <td align="right"> &nbsp; <%= link_to 'Edit', :action => 'edit', :id => player %> </td>
-    <% end %>
   </tr>
 <% end %>
 </table>  
