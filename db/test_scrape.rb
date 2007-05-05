@@ -4,7 +4,7 @@
 #  Copyright (c) 2007. All rights reserved.
 
   
-  def grab_pages (url)
+  def grab_pages (url, cookie)
     # this method just grabs the pages from the Y! website and returns the page as a variable
     require 'net/http'
     require 'uri'

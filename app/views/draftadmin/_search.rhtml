@@ -1,8 +1,5 @@
 <div id="draft_live">
 <% for pick in @picks %>
-  <div id="draftee<%= pick.pick_number %>"><%=h pick.pick_number %>. <%=h pick.player.player unless pick.player.nil? %> (<%=h pick.team.short_name unless pick.team.nil? %><%=h " - " + pick.player.pos unless pick.player.nil? %>) 
-  <input type="button" id="edit_<%= pick.pick_number %>" value="edit"/>
-  <%= in_place_editor_field 'pick', 'player_id' %> 
-  </div>
+  <div id="draftee<%= pick.pick_number %>"><%=h pick.pick_number %>. <%=h pick.player.player unless pick.player.nil? %></div>
 <% end %>
 </div>  

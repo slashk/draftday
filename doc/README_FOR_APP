@@ -68,11 +68,11 @@ RFEs:
 	14. create projected rankings and summary
 	15. create favorites / tagging 
 	16. Highlight users picks in the real-time scrolling draft (live)
-	17. fix BA printf problem (kill fronting zero)
-	18. Refactor main playeradmin page to use arrays to simplify code
+	XX 17. fix BA printf problem (kill fronting zero)
+	XX 18. Refactor main playeradmin page to use arrays to simplify code
 	19. figure out verification issue with drafting players (i.e. don't draft players who are already drafted or don't exist)
-	20. Figure out formatting for BA (you putz)
-	21. Make it pretty
+	XX 20. Figure out formatting for BA (you putz)
+	21. Make it look pretty
 	22. Update summary method to use the new pHR (projected stats) schema
 	
 TEST PLAN

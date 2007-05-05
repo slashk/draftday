@@ -2,14 +2,10 @@
 <table width="100%">
 <tr valign="top"><td width="75%">
     Show by position:
-       <%= link_to_remote 'C', :url => {:action => 'search', :fieldPosition => "C"}, :update => "search_hits" %>
-       <%= link_to_remote '1B', :url => {:action => 'search', :fieldPosition => "1B"}, :update => "search_hits" %>
-       <%= link_to_remote '2B', :url => {:action => 'search', :fieldPosition => "2B"}, :update => "search_hits" %>
-       <%= link_to_remote 'SS', :url => {:action => 'search', :fieldPosition => "SS"}, :update => "search_hits" %>
-       <%= link_to_remote '3B', :url => {:action => 'search', :fieldPosition => "3B"}, :update => "search_hits" %>
-       <%= link_to_remote 'OF', :url => {:action => 'search', :fieldPosition => "OF"}, :update => "search_hits" %>
-       <%= link_to_remote 'SP', :url => {:action => 'search', :fieldPosition => "SP"}, :update => "search_hits" %>
-       <%= link_to_remote 'RP', :url => {:action => 'search', :fieldPosition => "RP"}, :update => "search_hits" %>
+       <% p = [ 'C', '1B', '2B', 'SS', '3B', 'OF', 'SP', 'RP'] %>
+       <% p.each do |position| %>
+          <%= link_to_remote position, :url => {:action => 'search', :fieldPosition => position }, :update => "search_hits" %>
+       <% end %>
        <%= link_to_remote 'Batters', :url => {:action => 'search', :fieldPosition => "BATTERS"}, :update => "search_hits" %>
        <%= link_to_remote 'Pitchers', :url => {:action => 'search', :fieldPosition => "PITCHERS"}, :update => "search_hits" %>
        <%= link_to_remote 'Top 100', :url => {:action => 'search'}, :update => "search_hits" %>
@@ -17,27 +13,16 @@
 
     <br />
     Show by team:     
-    <%= link_to_remote 'ARI', :url => {:action => 'search', :team => "ARI"}, :update => "search_hits" %>
-    <%= link_to_remote 'ATL', :url => {:action => 'search', :team => "ATL"}, :update => "search_hits" %>
-    <%= link_to_remote 'ChC', :url => {:action => 'search', :team => "ChC"}, :update => "search_hits"  %>
-    <%= link_to_remote 'CIN', :url => {:action => 'search', :team => "CIN"}, :update => "search_hits"  %>
-    <%= link_to_remote 'COL', :url => {:action => 'search', :team => "COL"}, :update => "search_hits"  %>
-    <%= link_to_remote 'FLA', :url => {:action => 'search', :team => "FLA"}, :update => "search_hits"  %>
-    <%= link_to_remote 'HOU', :url => {:action => 'search', :team => "HOU"}, :update => "search_hits"  %>
-    <%= link_to_remote 'LAD', :url => {:action => 'search', :team => "LAD"}, :update => "search_hits"  %>
-    <%= link_to_remote 'MIL', :url => {:action => 'search', :team => "MIL"}, :update => "search_hits"  %>
-    <%= link_to_remote 'NYM', :url => {:action => 'search', :team => "NYM"}, :update => "search_hits"  %>
-    <%= link_to_remote 'PHI', :url => {:action => 'search', :team => "PHI"}, :update => "search_hits"  %>
-    <%= link_to_remote 'PIT', :url => {:action => 'search', :team => "PIT"}, :update => "search_hits"  %>
-    <%= link_to_remote 'SD', :url => {:action => 'search', :team => "SD"}, :update => "search_hits"  %>
-    <%= link_to_remote 'SF', :url => {:action => 'search', :team => "SF"}, :update => "search_hits"  %>
-    <%= link_to_remote 'STL', :url => {:action => 'search', :team => "STL"}, :update => "search_hits"  %>
-    <%= link_to_remote 'WAS', :url => {:action => 'search', :team => "WAS"}, :update => "search_hits"  %>
+    <% team = [ 'ARI', 'ATL', 'ChC', 'CIN', 'FLA', 'HOU', "LAD", 'MIL', 'NYM', 'PHI', 'PIT', 'SD', 'SF', 'STL', 'WAS' ] %>
+    <% team.each do |t| %>
+       <%= link_to_remote t, :url => {:action => 'search', :team => t }, :update => "search_hits" %>
+    <% end %>
+
     <br />
 
     Show by franchise:        
-    <% for team in @teams %>
-      <%= link_to_remote team.short_name, :url => {:action => 'searchbyfranchise', :team => team.id}, :update => "search_hits" %>
+    <% for franchise in @teams %>
+      <%= link_to_remote franchise.short_name, :url => {:action => 'searchbyfranchise', :team => franchise.id}, :update => "search_hits" %>
     <% end %>
 </td><td>
 

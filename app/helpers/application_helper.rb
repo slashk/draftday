@@ -13,8 +13,13 @@ module ApplicationHelper
   
   def ba(average)
     # we assume that you will get a float that looks like this 0.342
-    # need to convert from float to string then substring it
-    return average[1..3]
+    # we want to print something like .342
+    # convert to string, pad right with zeros then chop leading zero
+    d = average.to_s
+    while d.length < 5
+      d << "0"
+    end
+    return d.gsub("0\.","\.")
   end
   
 end

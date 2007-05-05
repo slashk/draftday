@@ -144,13 +144,13 @@ class PlayeradminController < ApplicationController
     @K = Hash.new
     @SV = Hash.new
     for pick in @picks
-      @HR[pick.team.short_name] = @HR.fetch(pick.team.short_name,0) + pick.player.HR unless pick.player.HR.nil?
-      @R[pick.team.short_name] =  @R.fetch(pick.team.short_name,0) + pick.player.R unless pick.player.R.nil?
-      @SB[pick.team.short_name] = @SB.fetch(pick.team.short_name,0) + pick.player.SB unless pick.player.SB.nil?
-      @RBI[pick.team.short_name] = @RBI.fetch(pick.team.short_name,0) + pick.player.RBI unless pick.player.RBI.nil?
-      @W[pick.team.short_name] = @W.fetch(pick.team.short_name,0) + pick.player.W unless pick.player.W.nil?
-      @K[pick.team.short_name] = @K.fetch(pick.team.short_name,0) + pick.player.K unless pick.player.K.nil?
-      @SV[pick.team.short_name] = @SV.fetch(pick.team.short_name,0) + pick.player.SV unless pick.player.SV.nil?
+      @HR[pick.team.short_name] = @HR.fetch(pick.team.short_name,0) + pick.player.pHR unless pick.player.pHR.nil?
+      @R[pick.team.short_name] =  @R.fetch(pick.team.short_name,0) + pick.player.pR unless pick.player.pR.nil?
+      @SB[pick.team.short_name] = @SB.fetch(pick.team.short_name,0) + pick.player.pSB unless pick.player.pSB.nil?
+      @RBI[pick.team.short_name] = @RBI.fetch(pick.team.short_name,0) + pick.player.pRBI unless pick.player.pRBI.nil?
+      @W[pick.team.short_name] = @W.fetch(pick.team.short_name,0) + pick.player.pW unless pick.player.pW.nil?
+      @K[pick.team.short_name] = @K.fetch(pick.team.short_name,0) + pick.player.pK unless pick.player.pK.nil?
+      @SV[pick.team.short_name] = @SV.fetch(pick.team.short_name,0) + pick.player.pSV unless pick.player.pSV.nil?
     end  
   end
   
