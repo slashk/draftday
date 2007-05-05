@@ -11,6 +11,11 @@ module ApplicationHelper
     return false
   end
   
+  def my_team?(team)
+    return true if session[:user].team_id == team
+    return false
+  end
+  
   def ba(average)
     # we assume that you will get a float that looks like this 0.342
     # we want to print something like .342

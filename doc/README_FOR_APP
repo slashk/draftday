@@ -65,15 +65,15 @@ RFEs:
 	11. Added retention controller. Extend player with "last years team" field. Extend player with "years retained" field. Create model for retainees (team_id, player_id). Let players see all people from last year, then check or move retainees into place. Put date check to lock down.
 	XX 12. Change draft admin page to move from pick to pick instead of pick to list to pick
 	13. add migration for projected rankings 
-	14. create projected rankings and summary
+	XX 14. create projected rankings and summary
 	15. create favorites / tagging 
-	16. Highlight users picks in the real-time scrolling draft (live)
+	XX 16. Highlight users picks in the real-time scrolling draft (live)
 	XX 17. fix BA printf problem (kill fronting zero)
 	XX 18. Refactor main playeradmin page to use arrays to simplify code
 	19. figure out verification issue with drafting players (i.e. don't draft players who are already drafted or don't exist)
 	XX 20. Figure out formatting for BA (you putz)
 	21. Make it look pretty
-	22. Update summary method to use the new pHR (projected stats) schema
+	XX 22. Update summary method to use the new pHR (projected stats) schema
 	
 TEST PLAN
 	Players
