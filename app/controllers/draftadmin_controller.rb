@@ -12,7 +12,7 @@ class DraftadminController < ApplicationController
 
   def list
     #@pick_pages, @picks = paginate :picks, :per_page => 25
-    @picks = Pick.find(:all)
+    @picks = Pick.find(:all, :include => [:player, :team])
   end
 
   def show
@@ -63,24 +63,28 @@ class DraftadminController < ApplicationController
     redirect_to :action => 'list'
   end
   
+  def lottery
+    @team = Team.find(:all, :order => "draft_order asc")
+    render :action => 'lottery'
+  end
+  
   def setDraft
     # this method creates a draft by creating picks with team_id but without player_id
     # need a double loop along with all the data from Teams and an alogoritm for draft type (probably :draftType )
     # params[:draftType] would be "1" for straight thru (1,2,3,1,2,3), "2" would be alternating (1,2,3,3,2,1)
     # check if table is populated, if so flash message
-    # get :draftType
+    # get :draftType, :numberOfRounds from form
     # get count of teams from teams table
-    # get :numberOfRounds
     # set up iterator. We need to take params[:numberOfRounds] x find.count[:team_id] and then iterate through them in draft order
-    #drop_table("picks")
     
     # find current pick and add to it
     currentDraftSlot = Pick.count
-    #numberOfTeams = params[:teamCount]
-    numberOfRounds = 15
+    # set draft config based on form
+    numberOfRounds = params[:numberOfRounds].to_i
     numberOfTeams = Team.count
-    #draftType = params[:draftType]
-    draftType = 1
+    draftType = params[:draftType]
+    
+    # set up the draft
     numberOfPicks = numberOfRounds * numberOfTeams
     1.upto(numberOfRounds) {| i |  
       1.upto(numberOfTeams) { |n| 
@@ -114,7 +118,7 @@ class DraftadminController < ApplicationController
     @futurepicks = Team.count
     @currentdraftee = Pick.count(:conditions => "player_id > 0")
     @currentdraftee = @futurepicks + @currentdraftee
-    @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
+    @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
     # instead of usual render :partial => "search" use the scriptalicious AJAXy way
     render :update do |page| 
       page.replace "draft_live", :partial => "search"

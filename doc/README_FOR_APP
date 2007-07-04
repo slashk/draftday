@@ -58,13 +58,13 @@ RFEs:
 		depth chart / rotation
 	XX 5. would like to tally franchise stats (projected or 2006) at bottom of franchise search
 	-- 6. Perhaps add in MLB team stats page ?
-	7. Create separate screen for franchise 2007 projected / 2006 actual stats accumulation
+	XX 7. Create separate screen for franchise 2007 projected / 2006 actual stats accumulation
 	XX 8. make header into partial
 	XX 9. rewrite setDraft so that it APPENDS to already created draft instead of trying to write over it
 	10. create webpage to config setDraft
 	11. Added retention controller. Extend player with "last years team" field. Extend player with "years retained" field. Create model for retainees (team_id, player_id). Let players see all people from last year, then check or move retainees into place. Put date check to lock down.
 	XX 12. Change draft admin page to move from pick to pick instead of pick to list to pick
-	13. add migration for projected rankings 
+	XX 13. add migration for projected rankings 
 	XX 14. create projected rankings and summary
 	15. create favorites / tagging 
 	XX 16. Highlight users picks in the real-time scrolling draft (live)

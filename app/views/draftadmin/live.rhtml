@@ -12,6 +12,6 @@
   @futurepicks = Team.count
   @currentdraftee = Pick.count(:conditions => "player_id > 0")
   @currentdraftee = @futurepicks + @currentdraftee
-  @picks = Pick.find(:all, :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
+  @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
   render :partial => "search"
 %>

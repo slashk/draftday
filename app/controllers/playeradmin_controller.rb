@@ -135,7 +135,7 @@ class PlayeradminController < ApplicationController
   end
   
   def summary
-    @picks = Pick.find(:all, :conditions => 'player_id > 0')
+    @picks = Pick.find(:all, :include => [:player, :team], :conditions => 'player_id > 0')
     @HR = Hash.new
     @R = Hash.new
     @SB = Hash.new

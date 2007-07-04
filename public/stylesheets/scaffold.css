@@ -1,9 +1,8 @@
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+  font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+  font-size: 13px;
 }
 
 pre {
@@ -80,13 +79,11 @@ div.progressBar div.background {
 }
 
 div#asshead {
-	background-color: lightgrey; 
+	background-color: silver; 
 	color: maroon;
-	border-style: dotted;
-	border-color: black;
-	border-width: 1px;
-	padding-left: 20px;
+	border-style: none;
 }
+
 
 div#left {
 	text-align: left;
