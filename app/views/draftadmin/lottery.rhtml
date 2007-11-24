@@ -1,0 +1,31 @@
+<h1>Create Draft</h1>
+
+<!-- This needs to give setDraft (draftadmin controller) the needed information to create the draft -->
+<!-- need to set :draftType (standard or pingpong) as well as rounds -->
+<!-- print out the entire list of teams in draft order -->
+
+<h2>Current Draft Order</h2>
+<% @team.each do |object| %>
+  <%= "#{object.draft_order}. #{object.short_name}<br />" %>
+<% end %>
+
+<h2>Draft options</h2>
+
+<form method="post" action="/draftadmin/setDraft" > 
+<!-- set draftType -->
+Draft Type:
+<select id="draftType" name="draftType"> 
+<option value="0">Normal (1,2,3,1,2,3)</option> 
+<option value="1">Ping Pong (1,2,3,3,2,1)</option> 
+</select> 
+<br />
+<!-- set numberOfRounds -->
+Number of Rounds: <select id="numberOfRounds" name="numberOfRounds"> 
+<% 20.times do |object| %>
+  <%= "<option value=\"#{object+1}\">#{object+1}</option>" %>
+<% end %>
+</select> 
+<br />
+<!-- need a submit button -->
+<input type="submit" value="Create Draft" /> 
+</form>
