@@ -8,7 +8,7 @@ class DraftadminController < ApplicationController
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+    :redirect_to => { :action => :list }
 
   def list
     #@pick_pages, @picks = paginate :picks, :per_page => 25
@@ -47,8 +47,8 @@ class DraftadminController < ApplicationController
     #@dummy=params[:pick]
     #@draftees = Pick.count(:conditions => ["player_id=?", @dummy.player_id ]) 
     #if @draftees > 0
-      #flash[:notice] = 'Player already drafted.'
-      #redirect_to :action => 'list'
+    #flash[:notice] = 'Player already drafted.'
+    #redirect_to :action => 'list'
     if @pick.update_attributes(params[:pick])
       flash[:notice] = 'Pick was successfully updated.'
       #redirect_to :action => 'show', :id => @pick
@@ -62,67 +62,42 @@ class DraftadminController < ApplicationController
     Pick.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
-  
-  def lottery
-    @team = Team.find(:all, :order => "draft_order asc")
-    render :action => 'lottery'
+
+  def live
+    @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC")
+    @teams = Team.find(:all, :order => "draft_order asc")
+    pick_number = Pick.count + 1
+    @drafter = Team.find_by_draft_order(whose_pick(pick_number, DRAFT))
+    @on_deck = Team.find_by_draft_order(whose_pick((pick_number+1), DRAFT))
+#    logger.debug "on_deck"
+#    logger.debug @on_deck
+    @last_pick_time = Pick.find(:first, :order => "pick_number desc").created_at
   end
   
-  def setDraft
-    # this method creates a draft by creating picks with team_id but without player_id
-    # need a double loop along with all the data from Teams and an alogoritm for draft type (probably :draftType )
-    # params[:draftType] would be "1" for straight thru (1,2,3,1,2,3), "2" would be alternating (1,2,3,3,2,1)
-    # check if table is populated, if so flash message
-    # get :draftType, :numberOfRounds from form
-    # get count of teams from teams table
-    # set up iterator. We need to take params[:numberOfRounds] x find.count[:team_id] and then iterate through them in draft order
-    
-    # find current pick and add to it
-    currentDraftSlot = Pick.count
-    # set draft config based on form
-    numberOfRounds = params[:numberOfRounds].to_i
-    numberOfTeams = Team.count
-    draftType = params[:draftType]
-    
-    # set up the draft
-    numberOfPicks = numberOfRounds * numberOfTeams
-    1.upto(numberOfRounds) {| i |  
-      1.upto(numberOfTeams) { |n| 
-        # determine if alternate draft is in use
-        if draftType == 1
-          # determine if round is even or odd
-          if i.modulo(2) == 1
-            # odd rounds are the lottery order
-            teamOnThePodium = n
-          else
-            # even rounds are reverse order
-            teamOnThePodium = numberOfTeams - n + 1
-          end
-        else
-          teamOnThePodium = n
-        end
-        @y = Team.find(:first, :conditions => ['draft_order = ?', teamOnThePodium])
-        @pick = Pick.new(:pick_number => numberOfTeams * (i - 1) + n + (currentDraftSlot), :team_id => @y.id, :player_id => 0)
-        @pick.save!
-      }
-    }
-    # flash success
-    # dump onto pickadmin screen
-    flash[:notice] = 'Draft created successfully.'
-    redirect_to :action => 'list'    
-  end
-  
-  def scrollDraft
+  def scrolldraft
     # find the number of teams, then find the number of players chosen
     # show only the drafted players plus the next (number of teams) rounds
-    @futurepicks = Team.count
-    @currentdraftee = Pick.count(:conditions => "player_id > 0")
-    @currentdraftee = @futurepicks + @currentdraftee
-    @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC", :conditions => ["pick_number < ?", @currentdraftee])
+    #    @futurepicks = Team.count
+    #    @currentdraftee = Pick.count(:conditions => "player_id > 0")
+    #    @currentdraftee = @futurepicks + @currentdraftee
+    @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC")
     # instead of usual render :partial => "search" use the scriptalicious AJAXy way
     render :update do |page| 
       page.replace "draft_live", :partial => "search"
       page.visual_effect :highlight, "draft_live", :duration => 2
+    end
+  end
+  
+  def scrollteam
+    @teams = Team.find(:all, :order => "draft_order asc")
+    pick_number = Pick.count + 1
+    @drafter = Team.find_by_draft_order(whose_pick(pick_number, DRAFT))
+    @on_deck = Team.find_by_draft_order(whose_pick((pick_number+1), DRAFT))
+    # figure out time since last pick
+    @last_pick_time = Pick.find(:first, :order => "pick_number desc").created_at
+    render :update do |page| 
+      page.replace "draftorder", :partial => "scrollteam"
+      #page.visual_effect :highlight, "scrollteam", :duration => 2
     end
   end
   

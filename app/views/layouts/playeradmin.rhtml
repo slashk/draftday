@@ -1,18 +1,25 @@
 <html>
-<head>
-  <title>Playeradmin: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-  <%= javascript_include_tag :defaults %>
-</head>
-<body>
-
-<div id="asshead">
-<%= render :partial => 'playeradmin/navigation' %>
-</div>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
-</body>
+  <head>
+    <title>Playeradmin: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'scaffold' %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    
+    <div id="asshead">
+      <%= render :partial => 'playeradmin/navigation' %>
+    </div>
+    
+    <div id="flash">
+      <% if flash[:notice] -%>
+        <div id="notice"><%= flash[:notice] %></div>
+      <% end -%>
+      <% if flash[:error] -%>
+        <div id="error"><%= flash[:error] %></div>
+      <% end -%>
+    </div>
+    
+    <%= yield  %>
+    
+  </body>
 </html>

@@ -4,10 +4,8 @@ class UserController < ApplicationController
 
   def login
     if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
-      redirect_to :controller => "playeradmin", :action => "live"
-    else
-      redirect_to :controller => "playeradmin", :action => "live"
     end
+    redirect_to :controller => "playeradmin", :action => "live"
   end
   
   def logout
