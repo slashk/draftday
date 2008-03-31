@@ -35,5 +35,5 @@ production:
   database: draftday_prod
   encoding: utf8
   username: root
-  password: 
+  password: L0u13d0g
   host: localhost
