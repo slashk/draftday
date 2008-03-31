@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 11) do
     t.column "pWHIP",     :float
   end
 
-  add_index "players", ["player"], :name => "players_player_index"
-  add_index "players", ["pos"], :name => "players_pos_index"
-  add_index "players", ["team"], :name => "players_team_index"
-  add_index "players", ["rank"], :name => "players_rank_index"
+  add_index "players", ["player"], :name => "index_players_on_player"
+  add_index "players", ["pos"], :name => "index_players_on_pos"
+  add_index "players", ["team"], :name => "index_players_on_team"
+  add_index "players", ["rank"], :name => "index_players_on_rank"
 
   create_table "sessions", :force => true do |t|
     t.column "session_id", :string
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 11) do
     t.column "updated_at", :datetime
   end
 
-  add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
 
   create_table "teams", :force => true do |t|
     t.column "full_name",      :string

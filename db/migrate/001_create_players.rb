@@ -2,7 +2,7 @@ class CreatePlayers < ActiveRecord::Migration
   def self.up
     create_table :players do |t|
       # t.column :name, :string
-      #id int NOT NULL AUTO_INCREMENT,
+      # id int NOT NULL AUTO_INCREMENT,
       t.column :yahoo_ref,  :integer, :default => 0
       t.column :player,   :string
       t.column :team,     :string
