@@ -1,15 +1,34 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+#
+# this is the new recipe
+# from http://forum.slicehost.com/comments.php?DiscussionID=809
+#
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
+require 'mongrel_cluster/recipes_2'
 
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
+set :application, "DraftDay"
+#set :local_repository,  ""
+#set :repository, "file:///home/kpepple/svn/mtbracereport/mtbracereport"
+set :repository,  "http://theassoc.textdriven.com/svn/DraftDay/"
 
-role :app, "your app-server here"
-role :web, "your web-server here"
-role :db,  "your db-server here", :primary => true
+set :deploy_to, "/var/www/#{application}"
+
+set :user, "kpepple"
+
+#set :deploy_via, :export
+set :runner, nil
+set :mongrel_conf, "#{deploy_to}/current/config/mongrel_cluster.yml"
+
+set :domain, "www.theassocofspecialtysports.com"
+role :app, domain
+role :web, domain
+role :db, domain, :primary => true
+
+ssh_options[:keys] = %w(/home/kpepple/.ssh/id_rsa)
+ssh_options[:port] = 22
+
+namespace :deploy do
+        task :restart do
+#               restart_mongrel_cluster
+                sudo "mongrel_rails cluster::restart -C #{mongrel_conf}"
+        end
+end
