@@ -1,3 +1,3 @@
 class TeamadminController < ApplicationController
-  scaffold :team
+  #scaffold :team
 end

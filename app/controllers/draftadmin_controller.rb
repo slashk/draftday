@@ -69,8 +69,8 @@ class DraftadminController < ApplicationController
     pick_number = Pick.count + 1
     @drafter = Team.find_by_draft_order(whose_pick(pick_number, DRAFT))
     @on_deck = Team.find_by_draft_order(whose_pick((pick_number+1), DRAFT))
-#    logger.debug "on_deck"
-#    logger.debug @on_deck
+    #    logger.debug "on_deck"
+    #    logger.debug @on_deck
     @last_pick_time = Pick.find(:first, :order => "pick_number desc").created_at
   end
   
@@ -82,10 +82,7 @@ class DraftadminController < ApplicationController
     #    @currentdraftee = @futurepicks + @currentdraftee
     @picks = Pick.find(:all, :include => [:player, :team], :order => "pick_number DESC")
     # instead of usual render :partial => "search" use the scriptalicious AJAXy way
-    render :update do |page| 
-      page.replace "draft_live", :partial => "search"
-      page.visual_effect :highlight, "draft_live", :duration => 2
-    end
+    render :partial => "search"
   end
   
   def scrollteam
@@ -95,10 +92,9 @@ class DraftadminController < ApplicationController
     @on_deck = Team.find_by_draft_order(whose_pick((pick_number+1), DRAFT))
     # figure out time since last pick
     @last_pick_time = Pick.find(:first, :order => "pick_number desc").created_at
-    render :update do |page| 
-      page.replace "draftorder", :partial => "scrollteam"
-      #page.visual_effect :highlight, "scrollteam", :duration => 2
-    end
+    # instead of usual render :partial => "search" use the scriptalicious AJAXy way
+    # uses the view/live.js.rjs
+    render :partial => "scrollteam"
   end
   
   def set_pick_player_id

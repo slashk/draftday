@@ -85,7 +85,7 @@ class PlayeradminController < ApplicationController
   
   # add live search via RJS/AJAX for player searches
   def live_search
-      @phrase = request.raw_post || request.query_string
+      @phrase = params[:searchtext]
       @searchphrase = "%" + @phrase + "%"
       @players = Player.find(:all, 
       :conditions => [ "picks.id IS NULL AND players.player LIKE ?", @searchphrase],

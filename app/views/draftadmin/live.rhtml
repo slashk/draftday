@@ -4,19 +4,20 @@
     :update => :draft_live, 
     :frequency => 20, 
     :condition => 1,
-    :before => "Element.show('spinner')",
-    :complete => "Element.hide('spinner')"
+    :complete => visual_effect(:highlight, 'draft_live')
 %> 
 
 <%= periodically_call_remote :url => {:action => 'scrollteam'}, 
     :update => :draftorder, 
     :frequency => 15, 
     :condition => 1,
-    :before => "Element.show('spinner')",
-    :complete => "Element.hide('spinner')"
+    :complete => visual_effect(:highlight, 'draftorder')
 %> 
 
+<div id="draftorder">
 <%= render :partial => "scrollteam" %>
+</div>
 
+<div id="draft_live">
 <%= render :partial => "search" %>
-
+</div>

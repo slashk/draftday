@@ -1,47 +1,55 @@
 --- 
-- team_id: 2
+admin:
+  team_id: 2
   role: admin
   id: 1
   password: L0u13d0g
   login: commish
   email: ken.pepple@gmail.com
-- team_id: 6
+elan:
+  team_id: 6
   role: owner
   id: 2
   password: uncle
   login: elan
   email: elanlip@aol.com
-- team_id: 
+kelly:
+  team_id: 
   role: owner
   id: 3
   password: uncle
   login: kelly
   email: klycollins@earthlink.net
-- team_id: 
+jeffy:
+  team_id: 
   role: owner
   id: 4
   password: uncle
   login: jeff
   email: jnharsh@msn.com
-- team_id: 
+shrek
+  team_id: 
   role: owner
   id: 5
   password: uncle
   login: shrek
   email: combsmj@msn.com
-- team_id: 8
+sharky:
+  team_id: 8
   role: owner
   id: 6
   password: uncle
   login: sharky
   email: combsmatt@yahoo.com
-- team_id: 
+strayer:
+  team_id: 7
   role: owner
   id: 7
   password: uncle
   login: strayer
   email: ronstrayer@msn.com
-- team_id: 
+spence:
+  team_id: 4
   role: owner
   id: 8
   password: uncle

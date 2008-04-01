@@ -1,7 +1,7 @@
-<span style="text-align:center"><%= start_form_tag({:controller => 'user', :action => 'login'},{:id => "login_form"}) -%>
+<span style="text-align:center"><%= form_tag({:controller => 'user', :action => 'login'},{:id => "login_form"}) -%>
 <label for="user_login">Login:</label></br />
 <%= text_field :user, :login -%><br />
 <label for="user_login">Password:</label></br />
 <%= password_field :user, :password -%><br />
 <%= submit_tag %>
-<%= end_form_tag %></span>
+</form></span>
