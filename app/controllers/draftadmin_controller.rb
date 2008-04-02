@@ -12,7 +12,7 @@ class DraftadminController < ApplicationController
 
   def list
     #@pick_pages, @picks = paginate :picks, :per_page => 25
-    @picks = Pick.find(:all, :include => [:player, :team])
+    @picks = Pick.find(:all, :include => [:player, :team], :order => 'pick_number')
   end
 
   def show
