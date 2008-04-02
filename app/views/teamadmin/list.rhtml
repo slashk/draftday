@@ -1,0 +1,18 @@
+<table>
+<tr>
+  <th align="left">Full Name</th>
+  <th align="left">Short Name</th>
+  <th align="left">Owner</th>
+  <th align="left">Draft Order</th>
+  <th></th>
+</tr>
+<% for team in @teams %>
+  <tr class="ListLine<%= cycle("1", "0") %>">
+      <td align="left"><%=h team.full_name  %></td>
+    <td align="left"><%=h team.short_name  %></td>
+    <td align="left"><%=h team.owner  %></td>
+    <td align="center"><%=h team.draft_order  %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => team.id %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,7 @@
+<h1>Editing user</h1>
+
+<% form_for :user, @user,  :url => {:action => 'update', :id => @user.id} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Back', :action => 'list' %>

@@ -1,0 +1,7 @@
+<h1>Editing team</h1>
+
+<% form_for :team, @team, :url => {:action => 'update', :id => @team.id} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Back', :action => 'list' %>
