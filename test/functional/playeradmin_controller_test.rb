@@ -16,7 +16,7 @@ class PlayeradminControllerTest < Test::Unit::TestCase
   def test_index
     get :index
     assert_response :success
-    assert_template 'list'
+    assert_template 'live'
   end
 
   def test_list
@@ -50,7 +50,7 @@ class PlayeradminControllerTest < Test::Unit::TestCase
   def test_create
     num_players = Player.count
 
-    post :create, :player => {}
+    post :create, :player => {:player => "Ken Pepple", :pos => "3B", :yahoo_ref => "6631"}
 
     assert_response :redirect
     assert_redirected_to :action => 'list'

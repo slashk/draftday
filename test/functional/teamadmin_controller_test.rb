@@ -5,6 +5,8 @@ require 'teamadmin_controller'
 class TeamadminController; def rescue_action(e) raise e end; end
 
 class TeamadminControllerTest < Test::Unit::TestCase
+  fixtures :teams
+  
   def setup
     @controller = TeamadminController.new
     @request    = ActionController::TestRequest.new
@@ -12,7 +14,19 @@ class TeamadminControllerTest < Test::Unit::TestCase
   end
 
   # Replace this with your real tests.
-  def test_truth
+  def test_should_get_list
+    get :list
+    assert_response :success
+  end
+  
+  def test_should_edit_team
+    get :edit, :id => 1
+    assert_response :success
+  end
+  
+  def test_should_update_team
+    # write a test here
     assert true
   end
+    
 end

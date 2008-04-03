@@ -50,7 +50,7 @@ class DraftadminControllerTest < Test::Unit::TestCase
   def test_create
     num_picks = Pick.count
 
-    post :create, :pick => {}
+    post :create, :pick => {:team_id => 1, :player_id => 5, :pick_number => 4}
 
     assert_response :redirect
     assert_redirected_to :action => 'list'
@@ -71,7 +71,7 @@ class DraftadminControllerTest < Test::Unit::TestCase
   def test_update
     post :update, :id => 1
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => 1
+    assert_redirected_to :action => 'list'
   end
 
   def test_destroy
