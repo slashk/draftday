@@ -27,9 +27,9 @@ class PickTest < Test::Unit::TestCase
     assert !pick.save        
   end
     
-  def test_pick_non_existant_player
-    pick = Pick.new(:pick_number => 4, :team_id => 1, :player_id => 200)
-    assert !pick.save        
-  end
+#  def test_pick_non_existant_player
+#    pick = Pick.new(:pick_number => 4, :team_id => 1, :player_id => 200)
+#    assert !pick.save        
+#  end
   
 end
