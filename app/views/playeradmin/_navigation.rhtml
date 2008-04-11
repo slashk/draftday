@@ -2,6 +2,13 @@
 <tr><td><img src="/images/assy.gif" width=30 height=30 alt="ASS Logo" title="$Id$"> Draft<strong>Day</strong></td>
 <td style="text-align:right;">
 <% if session[:user] %>
+  This is where the <br />
+draft highlights will go
+<% end %>
+</td>
+
+<td style="text-align:right;">
+<% if session[:user] %>
 <%= "Welcome #{session[:user].login} [#{session[:user].role}] !" %> 
 [ <%= link_to "logout", :controller => "user", :action => "logout" %>  ]<br />
 <%= link_to "Players", :controller => "playeradmin", :action => "live" %>
@@ -11,14 +18,10 @@
   end
 %>
 <%= link_to "Picks", :controller => "draftadmin", :action => "live"    %>
-<%=     link_to "Projection", :controller => "playeradmin", :action => "summary" %>
 <%= 
   if is_admin? 
+    link_to "Projection", :controller => "playeradmin", :action => "summary"
     link_to "Teams", :controller => "teamadmin", :action => "list"
-  end
-%>
-<%= 
-  if is_admin? 
     link_to "Users", :controller => "user", :action => "list"
   end
 %>

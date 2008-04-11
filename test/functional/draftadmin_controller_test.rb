@@ -50,6 +50,7 @@ class DraftadminControllerTest < Test::Unit::TestCase
   def test_create
     num_picks = Pick.count
 
+    # player_id 5 does exist (Halliday)
     post :create, :pick => {:team_id => 1, :player_id => 5, :pick_number => 4}
 
     assert_response :redirect
@@ -85,4 +86,17 @@ class DraftadminControllerTest < Test::Unit::TestCase
       Pick.find(1)
     }
   end
+  
+  def test_should_not_create_non_existent_player
+    num_picks = Pick.count
+
+    # player_id 10 does NOT exist
+    post :create, :pick => {:team_id => 1, :player_id => 10, :pick_number => 4}
+
+    # make sure that is doesn't add to the DB and it does render the blank new
+    assert_equal num_picks, Pick.count
+    assert_response :success
+    assert_template 'new'
+  end
+  
 end

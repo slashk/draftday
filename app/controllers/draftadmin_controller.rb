@@ -25,10 +25,10 @@ class DraftadminController < ApplicationController
 
   def create
     # I think we need to validate foreign keys here
-    # make sure playerid is a number and a foreign key
+    # make sure playerid is in the players model
     # need to wrap @validPlayer = Player.find(params[:pick][:player_id]) with some kind of try ... catch routine
     @pick = Pick.new(params[:pick])
-    if @pick.save
+    if Player.exists?(@pick.player_id) && @pick.save
       flash[:notice] = 'Pick was successfully created.'
       redirect_to :action => 'list'
     else
@@ -43,15 +43,8 @@ class DraftadminController < ApplicationController
 
   def update
     @pick = Pick.find(params[:id])
-    # how do we check for duplicate draft choices ?
-    #@dummy=params[:pick]
-    #@draftees = Pick.count(:conditions => ["player_id=?", @dummy.player_id ]) 
-    #if @draftees > 0
-    #flash[:notice] = 'Player already drafted.'
-    #redirect_to :action => 'list'
     if @pick.update_attributes(params[:pick])
       flash[:notice] = 'Pick was successfully updated.'
-      #redirect_to :action => 'show', :id => @pick
       redirect_to :action => 'list'
     else
       render :action => 'edit'
