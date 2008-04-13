@@ -6,9 +6,11 @@
 require 'mongrel_cluster/recipes_2'
 
 set :application, "DraftDay"
-#set :local_repository,  "/home/kpepple"
-set :repository, "file:///home/kpepple/svn/draftday/trunk/"
 #set :repository,  "http://theassoc.textdriven.com/svn/DraftDay/trunk/"
+
+set :local_repository,  "svn+ssh://www.mtbcalendar.com/home/kpepple/svn/draftday/"
+set :repository, "file:///home/kpepple/svn/draftday"
+
 
 set :deploy_to, "/var/www/#{application}"
 
