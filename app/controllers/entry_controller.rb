@@ -7,7 +7,7 @@ class EntryController < ApplicationController
     @drafter = Team.find_by_draft_order(whose_pick(@pick.pick_number, DRAFT))
     @pick.team_id = @drafter.id
     @teams = Team.find(:all)
-    @round = (@pick.pick_number/@teams.size).to_i
+    @round = find_round(@pick.pick_number)
   end
 
   def create

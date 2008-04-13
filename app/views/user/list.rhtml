@@ -4,6 +4,7 @@
   <th align="left">Password</th>
   <th align="left">Email</th>
   <th align="left">Team ID</th>
+  <th align="left">Team Name</th>
   <th align="left">Role</th>
   <th></th>
 </tr>
@@ -14,6 +15,7 @@
       <td align="left"><%=h user.password  %></td>
       <td align="left"><%=h user.email  %></td>
       <td align="left"><%=h user.team_id  %></td>
+      <td align="left"><%=h user.team.short_name unless user.team.nil? %></td>
       <td align="left"><%=h user.role  %></td>
       <td><%= link_to 'Edit', :action => 'edit', :id => user.id %></td>
         </tr>

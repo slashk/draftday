@@ -14,7 +14,7 @@ class UserController < ApplicationController
   end
   
   def list
-    @users = User.find(:all)
+    @users = User.find(:all, :include => :team)
   end
   
   def edit

@@ -90,6 +90,12 @@ class DraftadminController < ApplicationController
     render :partial => "scrollteam"
   end
   
+  def ticker
+    @pick = find_last_player_chosen
+    @team = find_team_on_clock
+    render :partial => "ticker"
+  end
+  
   def set_pick_player_id
     @pick = Pick.find(params[:id])
     previous_name = @pick.player_id

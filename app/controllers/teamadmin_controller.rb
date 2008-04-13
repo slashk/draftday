@@ -1,6 +1,6 @@
 class TeamadminController < ApplicationController
     def list
-    @teams = Team.find(:all)
+    @teams = Team.find(:all, :order => 'draft_order asc')
   end
   
   def edit

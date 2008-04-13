@@ -27,4 +27,6 @@ module ApplicationHelper
     return d.gsub("0\.","\.")
   end
   
+
+  
 end
