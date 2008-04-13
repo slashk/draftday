@@ -9,7 +9,7 @@ set :application, "DraftDay"
 #set :repository,  "http://theassoc.textdriven.com/svn/DraftDay/trunk/"
 
 set :local_repository,  "svn+ssh://www.mtbcalendar.com/home/kpepple/svn/draftday/"
-set :repository, "file:///home/kpepple/svn/draftday"
+set :repository, "file:///home/kpepple/svn/draftday/trunk/"
 
 
 set :deploy_to, "/var/www/#{application}"
