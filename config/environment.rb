@@ -23,10 +23,13 @@ Rails::Initializer.run do |config|
   # Force all environments to use the same logger level 
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
-
+  config.action_controller.session = {
+    :session_key => '_draftday',
+    :secret => '659fb024a47e7a518d963720c94bf52bffef45ebbdde6e3a4ac7197629cb7b9740d3678c7e52174f05c7368e810581d9d47e1aa81037bb58320c9902c2d2f078'
+  }
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
-  #config.action_controller.session_store = :active_record_store
+  config.action_controller.session_store = :active_record_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper, 
