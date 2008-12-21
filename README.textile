@@ -2,4 +2,14 @@ h2. draftday
 
 This application assists you in running your fantasy baseball draft.
 
+It was created before the 2005 baseball season to assist in my annual onsite draft. It was written to Rails 1.0.2 and is slowly being updated to current Rails versions.
+
 It is mostly aimed at Yahoo! Fantasy Baseball today.
+
+h3. Usage
+
+The application lets several owners view player stats and draft picks during a draft. 
+
+It is set up today so that a single administrator records all draft picks, but the owners can see all players left (as well as chosen) in real time.
+
+It can be used with remote owners, along as they have a means of communications with the administrator (commish). In 2008, we had one remote owner who drafted his team over IM while using the application.
