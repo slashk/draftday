@@ -1,4 +1,8 @@
 class PlayeradminController < ApplicationController
+  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
+  verify :method => :post, :only => [ :destroy, :create, :update ],
+    :redirect_to => { :action => :list }
+
   
   def index
     #list
@@ -11,12 +15,6 @@ class PlayeradminController < ApplicationController
     render :action => 'live'
   end
   
-  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
-
-
-
   def list
     @teams = Team.find(:all)
     # Figure out sort order first (assuming that top sort button pushed)
@@ -39,10 +37,10 @@ class PlayeradminController < ApplicationController
     # Left join is necessary to find all players NOT drafted
     # :include clause is necessary to reduce DB calls and make sure that primary key (player.id) is retrieved
     @players = Player.find(:all, 
-    :order => params[:sortOrder], 
-    :conditions => sortCons,  
-    :include => [:pick],
-    :joins => 'LEFT JOIN picks ON players.id=picks.id')
+      :order => params[:sortOrder],
+      :conditions => sortCons,
+      :include => [:pick],
+      :joins => 'LEFT JOIN picks ON players.id=picks.id')
     render 
   end
 
@@ -85,13 +83,13 @@ class PlayeradminController < ApplicationController
   
   # add live search via RJS/AJAX for player searches
   def live_search
-      @phrase = params[:searchtext]
-      @searchphrase = "%" + @phrase + "%"
-      @players = Player.find(:all, 
+    @phrase = params[:searchtext]
+    @searchphrase = "%" + @phrase + "%"
+    @players = Player.find(:all,
       :conditions => [ "picks.id IS NULL AND players.player LIKE ?", @searchphrase],
       :include => [:pick],
       :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
-      render :partial => "search"
+    render :partial => "search"
   end
   
   def searchbyfranchise
@@ -110,16 +108,16 @@ class PlayeradminController < ApplicationController
     # start with the base picks.id is NULL string (make only undrafted players show), then add others
     unless params[:fieldPosition].nil?
       case params[:fieldPosition]
-        when "ALL"
-          # don't add anything to sort conditions
-        when "BATTERS"
-          # add not pitchers clause
-          @sortConditions = @sortConditions + 'AND players.pos not like "%P%"'
-        when "PITCHERS"
-          # add pitchers clause
-          @sortConditions = @sortConditions + 'AND players.pos like "%P%"'
-        else
-          @sortConditions = @sortConditions + ' AND players.pos like "%' + params[:fieldPosition] + '%"'
+      when "ALL"
+        # don't add anything to sort conditions
+      when "BATTERS"
+        # add not pitchers clause
+        @sortConditions = @sortConditions + 'AND players.pos not like "%P%"'
+      when "PITCHERS"
+        # add pitchers clause
+        @sortConditions = @sortConditions + 'AND players.pos like "%P%"'
+      else
+        @sortConditions = @sortConditions + ' AND players.pos like "%' + params[:fieldPosition] + '%"'
       end
     end
     # add in the team condition to the sort

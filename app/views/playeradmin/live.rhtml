@@ -1,58 +1,57 @@
 <% if session[:user] %>
-<table width="100%">
-<tr valign="top"><td width="75%">
-    Show by position:
-       <% p = [ 'C', '1B', '2B', 'SS', '3B', 'OF', 'SP', 'RP'] %>
-       <% p.each do |position| %>
+  <table width="100%">
+    <tr valign="top"><td width="75%">
+        Show by position:
+        <% ['C','1B','2B','SS','3B','OF','SP','RP'].each do |position| %>
           <%= link_to_remote position, :url => {:action => 'search', :fieldPosition => position }, :update => "search_hits" %>
-       <% end %>
-       <%= link_to_remote 'Batters', :url => {:action => 'search', :fieldPosition => "BATTERS"}, :update => "search_hits" %>
-       <%= link_to_remote 'Pitchers', :url => {:action => 'search', :fieldPosition => "PITCHERS"}, :update => "search_hits" %>
-       <%= link_to_remote 'Top 100', :url => {:action => 'search'}, :update => "search_hits" %>
-       <%= link_to_remote 'ALL', :url => {:action => 'search', :fieldPosition => "ALL", :limits => '1000'}, :update => "search_hits" %>
+        <% end %>
+        <%= link_to_remote 'Batters', :url => {:action => 'search', :fieldPosition => "BATTERS"}, :update => "search_hits" %>
+        <%= link_to_remote 'Pitchers', :url => {:action => 'search', :fieldPosition => "PITCHERS"}, :update => "search_hits" %>
+        <%= link_to_remote 'Top 100', :url => {:action => 'search'}, :update => "search_hits" %>
+        <%= link_to_remote 'ALL', :url => {:action => 'search', :fieldPosition => "ALL", :limits => '1000'}, :update => "search_hits" %>
 
-    <br />
-    Show by team:     
-    <% team = [ 'ARI', 'ATL', 'ChC', 'CIN', 'FLA', 'HOU', "LAD", 'MIL', 'NYM', 'PHI', 'PIT', 'SD', 'SF', 'STL', 'WAS' ] %>
-    <% team.each do |t| %>
-       <%= link_to_remote t, :url => {:action => 'search', :team => t }, :update => "search_hits" %>
-    <% end %>
+        <br />
+        Show by team:
+        <% team = [ 'ARI', 'ATL', 'ChC', 'CIN', 'FLA', 'HOU', "LAD", 'MIL', 'NYM', 'PHI', 'PIT', 'SD', 'SF', 'STL', 'WAS' ] %>
+        <% team.each do |t| %>
+          <%= link_to_remote t, :url => {:action => 'search', :team => t }, :update => "search_hits" %>
+        <% end %>
 
-    <br />
+        <br />
 
-    Show by franchise:        
-    <% for franchise in @teams %>
-      <%= link_to_remote franchise.short_name, :url => {:action => 'searchbyfranchise', :team => franchise.id}, :update => "search_hits" %>
-    <% end %>
-</td><td>
+        Show by franchise:
+        <% for franchise in @teams %>
+          <%= link_to_remote franchise.short_name, :url => {:action => 'searchbyfranchise', :team => franchise.id}, :update => "search_hits" %>
+        <% end %>
+      </td><td>
 
-<label for="searchtext"><font size="1"><b>Search:</b></font></label>
-<%= text_field_tag 'searchtext' %>
-<img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" />
+        <label for="searchtext"><font size="1"><b>Search:</b></font></label>
+        <%= text_field_tag 'searchtext' %>
+        <img alt="spinner" id="spinner" src="/images/ajax-loader.gif" style="display:none;" />
 
-<%= observe_field('searchtext',
-                 :frequency => 1,
-                 :update => :search_hits,
-                 :loading => "Element.show('spinner')",
-                 :complete => "Element.hide('spinner')",
-                 :url => { :action => :live_search },
-                 :with => 'searchtext' ) 
-%>
-</td></tr></table>    
+        <%= observe_field('searchtext',
+          :frequency => 1,
+          :update => :search_hits,
+          :loading => "Element.show('spinner')",
+          :complete => "Element.hide('spinner')",
+          :url => { :action => :live_search },
+          :with => 'searchtext' )
+        %>
+  </td></tr></table>
 <% end %>
 
 <div id="search_hits">
-<%=
-   if logged_in? 
-     @players = Player.find(:all, 
+  <%=
+  if logged_in?
+    @players = Player.find(:all,
       :conditions => [ "picks.id IS NULL" ],
-      :order => [ "rank asc"], 
+      :order => [ "rank asc"],
       :include => [:pick],
       :limit => ['100'],
       :joins => 'LEFT JOIN picks ON players.id=picks.player_id')
-      render :partial => "search"
-    else
-      render :partial => "login"
-    end
+    render :partial => "search"
+  else
+    render :partial => "login"
+  end
 %>
 </div>
