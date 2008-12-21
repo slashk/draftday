@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   # player by franchise
   # player by pos
   # player by team
-  named_scope :undrafted, {:joins => 'LEFT JOIN picks ON players.id=picks.player_id', :include => [:pick]}
+  named_scope :undrafted, :joins => 'LEFT JOIN picks ON players.id=picks.player_id', :include => [:pick]
 #  named_scope :team, lambda {{:conditions => ["end_date >= ?", Date.today], :order => "start_date asc"}}
 #  named_scope :franchise, lambda {{:conditions => ["end_date < ?", Date.today], :limit => 5, :order => "start_date desc"}}
 #  named_scope :updated, :order => "updated_at desc", :conditions => "active", :limit => 5
