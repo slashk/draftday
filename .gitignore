@@ -1,2 +1,4 @@
 .DS_Store
 config/deploy.rb
+db/create_teams.sql
+db/create_users.sql
