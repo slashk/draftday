@@ -12,11 +12,9 @@
 
         <br />
         Show by team:
-        <% team = [ 'ARI', 'ATL', 'ChC', 'CIN', 'FLA', 'HOU', "LAD", 'MIL', 'NYM', 'PHI', 'PIT', 'SD', 'SF', 'STL', 'WAS' ] %>
-        <% team.each do |t| %>
+        <% ['ARI','ATL','ChC','CIN','FLA','HOU','LAD','MIL','NYM','PHI','PIT','SD','SF','STL','WAS'].each do |t| %>
           <%= link_to_remote t, :url => {:action => 'search', :team => t }, :update => "search_hits" %>
         <% end %>
-
         <br />
 
         Show by franchise:
@@ -36,7 +34,7 @@
           :complete => "Element.hide('spinner')",
           :url => { :action => :live_search },
           :with => 'searchtext' )
-        %>
+      %>
   </td></tr></table>
 <% end %>
 
