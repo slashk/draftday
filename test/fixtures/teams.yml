@@ -3,7 +3,7 @@ Jeffy:
   id: 1
   full_name: Holy Cows
   short_name: Cows
-  owner: Jeff Harshbarger
+  owner: Jeff 
   team_yahoo_ref: 5
   draft_order: 1
 
@@ -11,7 +11,7 @@ Ken:
   id: 2
   full_name: El Dorado Coyotes
   short_name: Coyotes
-  owner: Ken Pepple
+  owner: Ken 
   team_yahoo_ref: 1
   draft_order: 5
 
@@ -19,7 +19,7 @@ Freddie:
   id: 3
   full_name: Unbreakable
   short_name: Unbreakable
-  owner: Freddie Williams
+  owner: Freddie 
   team_yahoo_ref: 2
   draft_order: 4
 
@@ -27,7 +27,7 @@ Spencer:
   id: 4
   full_name: Ahwatukee Alestorm
   short_name: Ale
-  owner: Mark Spencer
+  owner: Mark 
   team_yahoo_ref: 3
   draft_order: 7
 
@@ -35,7 +35,7 @@ Kelly:
   id: 5
   full_name: Orangevale Rats
   short_name: Rats
-  owner: Kelly Collins
+  owner: Kelly 
   team_yahoo_ref: 4
   draft_order: 3
     
@@ -43,7 +43,7 @@ Elan:
   id: 6
   full_name: Northern Treehuggers
   short_name: Treehuggers
-  owner: Elan Lipschitz
+  owner: Elan 
   team_yahoo_ref: 6
   draft_order: 8
     
@@ -51,7 +51,7 @@ Ron:
   id: 7
   full_name: KU Krunchers
   short_name: Krunchers
-  owner: Ron Strayer
+  owner: Ron 
   team_yahoo_ref: 7
   draft_order: 2
     
@@ -59,7 +59,7 @@ Sharky:
   id: 8
   full_name: D County Possums
   short_name: Possums
-  owner: Matt Combs
+  owner: Matt 
   team_yahoo_ref: 8
   draft_order: 9
     
@@ -67,6 +67,6 @@ Shrek:
   id: 9
   full_name: GREMOBY Murakami
   short_name: GREMOBY
-  owner: Mark Combs
+  owner: Mark
   team_yahoo_ref: 9
   draft_order: 6
