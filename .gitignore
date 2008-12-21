@@ -1,4 +1,6 @@
 .DS_Store
 config/deploy.rb
-db/create_teams.sql
-db/create_users.sql
+log/*.log
+tmp/**/*
+doc/api
+doc/app
