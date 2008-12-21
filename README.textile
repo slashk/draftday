@@ -13,3 +13,26 @@ The application lets several owners view player stats and draft picks during a d
 It is set up today so that a single administrator records all draft picks, but the owners can see all players left (as well as chosen) in real time.
 
 It can be used with remote owners, along as they have a means of communications with the administrator (commish). In 2008, we had one remote owner who drafted his team over IM while using the application.
+
+h3. Functionality
+
+There are several screens to this application
+
+* User screens
+** Players screen: this is mostly an Ajax driven player stat sorter. It is the main screen where you can see all the available (undrafted) players. Players can be sorted by about any DB field (team, position, stats, etc.). There is also an Ajax live search box. Finally, there is an Ajax updater on the top of the screen that shows the last pick taken.
+** Picks screen: shows the draft picks in order as well as the upcoming draft order. These are both Ajax periodic updaters.
+** Projections screen: a half ass implementation of aggregating team stats to see how your draft is fairing. Needs major work.
+* Commish (Admin) screens
+** Entry screen: a commish only screen, where the draft administrator can record picks.
+** Commish screen: basically the draft list, but fully editable (in case of problems).
+** Teams screen: a screen to setup fantasy teams and draft order. This should probably be merged with the users screen. Originally, I envisioned storing every draft in the database and thought this would be a good abstraction -- turns out it hasn't gone that way.
+** Users screen: your basic user accounts. This was written before Rails 2.0 and restful-authentication so I just cobbled together some really poor stuff. Needs to be rewritten.
+
+h3. To Do
+
+* refactor the code. there be rails 1.0.3 dragons.
+* add in real authentication
+* clean up Ajax/RJS
+* clean up player sorting algorithm. it's shameful hack.
+* add analysis features beyond the half-assed projections screen. or maybe make that full-assed.
+* eventually make this so no "admin" or "commish" is needed -- that's right a real draft application which allows you to draft your own player and keeps track of time. i can dream. 
