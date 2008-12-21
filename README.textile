@@ -30,9 +30,14 @@ There are several screens to this application
 
 h3. To Do
 
+* add real testing. and javascript testing.
 * refactor the code. there be rails 1.0.3 dragons.
 * add in real authentication
 * clean up Ajax/RJS
 * clean up player sorting algorithm. it's shameful hack.
 * add analysis features beyond the half-assed projections screen. or maybe make that full-assed.
 * eventually make this so no "admin" or "commish" is needed -- that's right a real draft application which allows you to draft your own player and keeps track of time. i can dream. 
+
+h3. Utilities
+
+In the DB folder, there is a script called hpricot_players.rb that scrapes player stats to populate the players model/database.
